@@ -41,7 +41,7 @@ jobs:
     docker:
       - image: circleci/node:10-browsers
     steps:
-      - checkout
+      - build
       - run:
           name: Test
           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
