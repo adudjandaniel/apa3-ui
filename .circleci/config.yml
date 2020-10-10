@@ -2,20 +2,17 @@ version: 2.1
 workflows:
   build_test_deploy:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - build_test:
       - deploy:
           filters:
             branches:
               only:
                 - main
           requires:
-            - test
+            - build_test
 
 jobs:
-  build:
+  build_test:
     working_directory: ~/apa3-ui
     docker:
       - image: circleci/node:10-browsers
@@ -36,12 +33,6 @@ jobs:
       - run:
           name: Lint
           command: npm run lint
-  test:
-    working_directory: ~/apa3-ui
-    docker:
-      - image: circleci/node:10-browsers
-    steps:
-      - checkout
       - run:
         name: Test
         command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
