@@ -2,17 +2,20 @@ version: 2.1
 workflows:
   build_test_deploy:
     jobs:
-      - build_test:
+      - build
+      - test:
+          requires:
+            - build
       - deploy:
           filters:
             branches:
               only:
                 - main
           requires:
-            - build_test
+            - test
 
 jobs:
-  build_test:
+  build:
     working_directory: ~/apa3-ui
     docker:
       - image: circleci/node:10-browsers
@@ -33,12 +36,17 @@ jobs:
       - run:
           name: Lint
           command: npm run lint
+  test:
+    working_directory: ~/apa3-ui
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
       - run:
-        name: Test
-        command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          name: Test
+          command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
-        name: End to End Test
-        command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+          name: End to End Test
+          command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
   deploy:
     docker:
       - image: circleci/node:10-browsers
