@@ -1,6 +1,6 @@
-# Apa3Ui
+# Apa3-UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+UI for Automated Parking Assist Project Team 3.
 
 ## Development server
 
