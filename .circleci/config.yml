@@ -1,0 +1,50 @@
+version: 2.1
+workflows:
+  build_test_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - test
+
+jobs:
+  build:
+    working_directory: ~/apa3-ui
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      # Restore dependencies from cache
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      # Cache dependencies if they don't exit
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      # Lint source code
+      - run:
+          name: Lint
+          command: npm run lint
+  test:
+    working_directory: ~/apa3-ui
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - run:
+        name: Test
+        command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run:
+        name: End to End Test
+        command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+  deploy:
