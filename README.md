@@ -1,6 +1,6 @@
 # Apa3-UI
 
-UI for Automated Parking Assist Project Team 3.
+UI for Active Park Assist Project Team 3.
 
 ## Development server
 
