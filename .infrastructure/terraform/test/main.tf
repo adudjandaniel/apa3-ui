@@ -99,14 +99,3 @@ resource "acme_certificate" "certificate" {
     }
   }
 }
-
-
-resource "google_compute_ssl_certificate" "apa3-ui-test-cert" {
-  name = "apa3-ui-test-cert"
-  private_key = acme_certificate.certificate.private_key_pem
-  certificate = acme_certificate.certificate.certificate_pem
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
