@@ -165,7 +165,7 @@ resource "google_compute_target_https_proxy" "apa3_ui_test_lb_proxy_ssl" {
   provider = google-beta
 
   name    = "apa3-ui-test-lb-target-proxy-ssl"
-  url_map = google_compute_url_map.apa3_ui_test_url_map.id
+  url_map = google_compute_url_map.apa3_ui_test_url_map_ssl.id
   ssl_certificates = [google_compute_managed_ssl_certificate.apa3_ui_test_lb_proxy_ssl_cert.id]
 }
 
@@ -183,5 +183,15 @@ resource "google_compute_url_map" "apa3_ui_test_url_map" {
   provider = google-beta
 
   name            = "apa3-ui-test-url-map"
+  default_url_redirect {
+    https_redirect = true
+    strip_query = false
+  }
+}
+
+resource "google_compute_url_map" "apa3_ui_test_url_map_ssl" {
+  provider = google-beta
+
+  name            = "apa3-ui-test-url-map-ssl"
   default_service = google_compute_backend_service.apa3_ui_test_backend_service.id
 }
