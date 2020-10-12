@@ -17,13 +17,13 @@ provider "google-beta" {
   zone = var.zone
 }
 
-resource "google_compute_network" "apa3_vpc" {
-  name = "apa3-vpc-network"
+resource "google_compute_network" "apa3_test_vpc" {
+  name = "apa3-test-vpc"
 }
 
 resource "google_compute_firewall" "test-http-80" {
   name    = "test-http-80"
-  network = google_compute_network.apa3_vpc.name
+  network = google_compute_network.apa3_test_vpc.name
 
   allow {
     protocol = "icmp"
@@ -63,7 +63,7 @@ resource "google_compute_instance" "apa3-ui-vm-test" {
   }
 
   network_interface {
-    network = "default"
+    network = google_compute_network.apa3_test_vpc.name
     access_config {
       nat_ip = google_compute_address.apa3_ui_vm_test_static_ip.address
     }
@@ -71,21 +71,20 @@ resource "google_compute_instance" "apa3-ui-vm-test" {
 }
 
 resource "google_dns_record_set" "apa3-test" {
-  name         = var.domain_name
+  name         = "${var.domain}."
   managed_zone = "luzcode"
   type         = "A"
   ttl          = 300
 
-  rrdatas = [google_compute_instance.apa3-ui-vm-test.network_interface[0].access_config[0].nat_ip]
+  rrdatas = [google_compute_address.apa3_ui_test_lb_static_ip.address]
 }
 
 resource "google_compute_address" "apa3_ui_vm_test_static_ip" {
   name = "apa3-ui-test-static-ip"
 }
 
-
-resource "google_compute_instance_group" "apa3-instance-group" {
-  name        = "apa3-ui-instances"
+resource "google_compute_instance_group" "apa3-test-instances" {
+  name        = "apa3-ui-test-instances"
   description = "APA UI instance groups"
 
   instances = [
@@ -105,8 +104,8 @@ resource "google_compute_instance_group" "apa3-instance-group" {
   zone = var.zone
 }
 
-resource "google_compute_health_check" "http-health-check" {
-  name = "http-health-check"
+resource "google_compute_health_check" "apa3-ui-test-http-health-check" {
+  name = "apa3-ui-test-http-health-check"
 
   timeout_sec        = 5
   check_interval_sec = 10
@@ -116,44 +115,73 @@ resource "google_compute_health_check" "http-health-check" {
   }
 }
 
-resource "google_compute_backend_service" "default" {
-  name          = "backend-service-apa3"
-  health_checks = [google_compute_health_check.http-health-check.id]
+resource "google_compute_backend_service" "apa3_ui_test_backend_service" {
+  name          = "apa3-ui-test-backend-service"
+  health_checks = [google_compute_health_check.apa3-ui-test-http-health-check.id]
   load_balancing_scheme = "EXTERNAL"
   protocol = "HTTP"
   port_name = "http"
   
   backend {
-    group = google_compute_instance_group.apa3-instance-group.self_link
+    group = google_compute_instance_group.apa3-test-instances.self_link
   }
 }
 
-resource "google_compute_address" "apa3_ui_lb_static_ip" {
-  name = "apa3-ui-lb-static-ip"
+resource "google_compute_address" "apa3_ui_test_lb_static_ip" {
+  name = "apa3-ui-test-lb-static-ip"
   network_tier = "STANDARD"
 }
 
-resource "google_compute_forwarding_rule" "apa3_ui_lb_frontend" {
-  name = "apa3-ui-lb-frontend"
+resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend" {
+  name = "apa3-ui-test-lb-frontend"
   region = var.region
-  ip_address = google_compute_address.apa3_ui_lb_static_ip.address
+  ip_address = google_compute_address.apa3_ui_test_lb_static_ip.address
   ip_protocol = "TCP"
   load_balancing_scheme = "EXTERNAL"
   network_tier = "STANDARD"
   port_range = "80"
-  target = google_compute_target_http_proxy.apa3_ui_lb_proxy.id
+  target = google_compute_target_http_proxy.apa3_ui_test_lb_proxy.id
 }
 
-resource "google_compute_target_http_proxy" "apa3_ui_lb_proxy" {
-  provider = google-beta
-
-  name    = "apa3-ui-lb-target-proxy"
-  url_map = google_compute_url_map.apa3_ui_url_map.id
+resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend-ssl" {
+  name = "apa3-ui-test-lb-frontend-ssl"
+  region = var.region
+  ip_address = google_compute_address.apa3_ui_test_lb_static_ip.address
+  ip_protocol = "TCP"
+  load_balancing_scheme = "EXTERNAL"
+  network_tier = "STANDARD"
+  port_range = "443"
+  target = google_compute_target_https_proxy.apa3_ui_test_lb_proxy_ssl.id
 }
 
-resource "google_compute_url_map" "apa3_ui_url_map" {
+resource "google_compute_target_http_proxy" "apa3_ui_test_lb_proxy" {
   provider = google-beta
 
-  name            = "apa3-ui-url-map"
-  default_service = google_compute_backend_service.default.id
+  name    = "apa3-ui-test-lb-target-proxy"
+  url_map = google_compute_url_map.apa3_ui_test_url_map.id
+}
+
+resource "google_compute_target_https_proxy" "apa3_ui_test_lb_proxy_ssl" {
+  provider = google-beta
+
+  name    = "apa3-ui-test-lb-target-proxy-ssl"
+  url_map = google_compute_url_map.apa3_ui_test_url_map.id
+  ssl_certificates = [google_compute_managed_ssl_certificate.apa3_ui_test_lb_proxy_ssl_cert.id]
+}
+
+resource "google_compute_managed_ssl_certificate" "apa3_ui_test_lb_proxy_ssl_cert" {
+  provider = google-beta
+
+  name = "apa3-ui-test-lb-target-proxy-ssl-cert"
+
+  managed {
+    domains = [var.domain]
+  }
+}
+
+resource "google_compute_url_map" "apa3_ui_test_url_map" {
+  provider = google-beta
+
+  name            = "apa3-ui-test-url-map"
+  default_service = google_compute_backend_service.apa3_ui_test_backend_service.id
 }

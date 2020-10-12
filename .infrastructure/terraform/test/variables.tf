@@ -26,7 +26,7 @@ variable "boot_image_name" {
 variable "docker_declaration" {
 }
 
-variable "domain_name" {
+variable "domain" {
 }
 
 variable "machine_types" {
