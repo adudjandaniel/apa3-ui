@@ -1,5 +1,5 @@
 body {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
   }
   .hero {
       position: absolute;
@@ -17,8 +17,11 @@ body {
       background: url("/assets/img/hero.png") no-repeat;
       background-size: cover;
   }
+  .page-content {
+    margin: 2em 6em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
   .header {
-    margin: 2em 1em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -47,9 +50,9 @@ body {
     justify-content: space-around;
   }
   .hero-content {
-    width: 80vw;
+    width: 100%;
+    height: 100vh;
     color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .hero-text {
     text-align: center;
@@ -131,4 +134,72 @@ body {
   }
   .dropdown-content a:hover {
     text-decoration: underline;
+  }
+  .home-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5em 1em;
+    margin: 5em 2em;
+  }
+  .section-header {
+    width: 20%;
+  }
+  .section-content {
+    width: 50%;
+    padding: 1em 2em;
+    margin: 0 1em;
+    border-left: 1px solid black;
+  }
+  .section-header h3 {
+    font-weight: lighter;
+    font-size: 2em;
+  }
+  .section-content ul {
+    list-style-type: none;
+  }
+  .course-information ul li {
+    margin: 2em 1em;
+  }
+  .section-content p {
+    word-spacing: 3px;
+    font-weight: 200;
+    font-size: 0.8em;
+    line-height: 180%;
+  }
+  .home-section .team-members {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .team-members .team-member {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1em 1em;
+    align-items: center;
+  }
+  .team-member .member-image {
+    width: 15%;
+  }
+  .team-members .member-info {
+    width: 60%;
+  }
+  .member-info li {
+    font-weight: lighter;
+    font-size: 0.7em;
+    margin: 0;
+    padding: 0;
+  }
+  .member-info li.member-name {
+    font-size: 1.5em;
+  }
+  .member-info li.member-role {
+    font-size: 0.8em;
+  }
+  .member-image img {
+    width: 100%;
+    border-radius: 50%;
   }
