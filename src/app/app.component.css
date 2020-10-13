@@ -1,205 +1,255 @@
-body {
-    /* box-sizing: border-box; */
-  }
-  .hero {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -100;
-      -ms-transform: translateX(-50%) translateY(-50%);
-      -moz-transform: translateX(-50%) translateY(-50%);
-      -webkit-transform: translateX(-50%) translateY(-50%);
-      transform: translateX(-50%) translateY(-50%);
-      background: url("/assets/img/hero.png") no-repeat;
-      background-size: cover;
-  }
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url("/assets/img/hero.png") no-repeat;
+    background-size: cover;
+}
+.page-content {
+  margin: 2em 6em;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  color: grey;
+}
+.site-name {
+  width: 40%
+}
+.header .site-name p {
+  font-size: 1.5em;
+  color: grey;
+}
+.hero:before {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.hero-content-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.hero-content {
+  width: 100%;
+  height: 100vh;
+  color: white;
+}
+.hero-text {
+  text-align: center;
+  width: 100%;
+}
+.hero-text p#team {
+  margin-top: 10px;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+.hero-text p {
+  margin: 0;
+  font-size: 5em;
+  letter-spacing: 7px;
+  font-weight: lighter;
+}
+.hero-text-wrapper {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-wrapper {
+  width: 40%;
+}
+.nav {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.nav-item {
+  position: relative;
+}
+.nav-item:hover div {
+  display: block;
+}
+.nav:hover .nav-content,
+.nav:focus .nav-content {
+  display: flex;
+}
+.nav button {
+  font-size: 0.9em;
+  outline: none;
+  background: none;
+  color: inherit;
+  border: none;
+}
+.nav button:hover,
+.nav button:focus {
+  color: white;
+  cursor: pointer;
+  border-bottom: 1px black;
+}
+.some-login-stuff {
+  width: 30%;
+  text-align: right;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  padding: 1em;
+  color: black;
+  font-size: 0.7em;
+  letter-spacing: 0.5px;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 1em 0;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  text-decoration: underline;
+}
+.home-section {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5em 1em;
+  margin: 5em 2em;
+}
+.section-header {
+  width: 20%;
+}
+.section-content {
+  width: 50%;
+  padding: 1em 2em;
+  margin: 0 1em;
+  border-left: 1px solid black;
+}
+.section-header h3 {
+  font-weight: lighter;
+  font-size: 2em;
+}
+.section-content ul {
+  list-style-type: none;
+}
+.course-information ul li {
+  margin: 2em 1em;
+}
+.section-content p {
+  word-spacing: 3px;
+  font-weight: 200;
+  font-size: 0.8em;
+  line-height: 180%;
+}
+.home-section .team-members {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.team-members .team-member {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1em 1em;
+  align-items: center;
+}
+.team-member .member-image {
+  width: 25%;
+}
+.team-members .member-info {
+  width: 60%;
+}
+.member-info li {
+  font-weight: lighter;
+  font-size: 0.7em;
+  margin: 0;
+  padding: 0;
+}
+.member-info li.member-name {
+  font-size: 1.5em;
+}
+.member-info li.member-role {
+  font-size: 0.8em;
+}
+.member-image img {
+  width: 100%;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 600px) {
   .page-content {
-    margin: 2em 6em;
+    margin: 2em 2em;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .header {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: baseline;
-    color: grey;
-  }
-  .site-name {
-    width: 40%
-  }
-  .header .site-name p {
-    font-size: 1.5em;
-    color: grey;
-  }
-  .hero:before {
-      content: '';
-      position: absolute;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 5px;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-  }
-  .hero-content-wrapper {
-    display: flex;
-    justify-content: space-around;
-  }
-  .hero-content {
-    width: 100%;
-    height: 100vh;
-    color: white;
-  }
-  .hero-text {
-    text-align: center;
-    width: 100%;
-  }
-  .hero-text p#team {
-    margin-top: 10px;
-    font-size: 1em;
-    letter-spacing: 1px;
-    font-weight: lighter;
-  }
-  .hero-text p {
-    margin: 0;
-    font-size: 5em;
-    letter-spacing: 7px;
-    font-weight: lighter;
-  }
-  .hero-text-wrapper {
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
     align-items: center;
-  }
-  .nav-wrapper {
-    width: 40%;
-  }
-  .nav {
-    position: relative;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    flex-direction: row;
-  }
-  .nav-item {
-    position: relative;
-  }
-  .nav-item:hover div {
-    display: block;
-  }
-  .nav:hover .nav-content,
-  .nav:focus .nav-content {
-    display: flex;
-  }
-  .nav button {
-    font-size: 0.9em;
-    outline: none;
-    background: none;
-    color: inherit;
-    border: none;
-  }
-  .nav button:hover,
-  .nav button:focus {
-    color: white;
-    cursor: pointer;
-    border-bottom: 1px black;
-  }
-  .some-login-stuff {
-    width: 30%;
-    text-align: right;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    padding: 1em;
-    color: black;
-    font-size: 0.7em;
-    letter-spacing: 0.5px;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .dropdown-content a {
-    color: black;
-    padding: 1em 0;
-    text-decoration: none;
-    display: block;
-  }
-  .dropdown-content a:hover {
-    text-decoration: underline;
   }
   .home-section {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 5em 1em;
-    margin: 5em 2em;
+    padding: 5em 0;
+    margin: 5em 0;
   }
-  .section-header {
-    width: 20%;
+  .hero-text p {
+    margin: 0;
+    font-size: 3em;
+    letter-spacing: 7px;
+    font-weight: lighter;
   }
   .section-content {
-    width: 50%;
-    padding: 1em 2em;
-    margin: 0 1em;
-    border-left: 1px solid black;
+    width: 100%;
+    padding: 1em 0;
+    margin: 0;
+    border-left: none;
   }
-  .section-header h3 {
-    font-weight: lighter;
-    font-size: 2em;
+  .course-information ul{
+    padding: 0;
+    margin: 0;
   }
-  .section-content ul {
-    list-style-type: none;
-  }
-  .course-information ul li {
-    margin: 2em 1em;
-  }
-  .section-content p {
-    word-spacing: 3px;
-    font-weight: 200;
-    font-size: 0.8em;
-    line-height: 180%;
-  }
-  .home-section .team-members {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .section-header {
+    width: 100%;
   }
   .team-members .team-member {
     position: relative;
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     margin: 1em 1em;
     align-items: center;
   }
   .team-member .member-image {
-    width: 15%;
+    width: 80%;
   }
   .team-members .member-info {
-    width: 60%;
-  }
-  .member-info li {
-    font-weight: lighter;
-    font-size: 0.7em;
-    margin: 0;
-    padding: 0;
-  }
-  .member-info li.member-name {
-    font-size: 1.5em;
-  }
-  .member-info li.member-role {
-    font-size: 0.8em;
-  }
-  .member-image img {
     width: 100%;
-    border-radius: 50%;
   }
+}
