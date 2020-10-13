@@ -200,7 +200,7 @@
   width: 100%;
   border-radius: 50%;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
   .page-content {
     margin: 2em 2em;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -251,5 +251,8 @@
   }
   .team-members .member-info {
     width: 100%;
+  }
+  .header .site-name p {
+    text-align: center;
   }
 }
