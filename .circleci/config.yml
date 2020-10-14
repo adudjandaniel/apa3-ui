@@ -10,6 +10,13 @@ workflows:
                 - main
           requires:
             - build_test
+      - push_test:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - deploy
 
 jobs:
   build_test:
@@ -55,3 +62,17 @@ jobs:
             docker build -t $DOCKER_USERNAME/$IMAGE_NAME -t $DOCKER_USERNAME/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_USERNAME --password-stdin
             docker push $DOCKER_USERNAME/$IMAGE_NAME
+  push_test:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run:
+          name: Update Container
+          command: |       
+            echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
+            echo 'export IMAGE_NAME=apa3-ui' >> $BASH_ENV
+            source $BASH_ENV
+            echo '$PROJ_PUB' >> ./pass.json.pub
+            echo '$PROJ_KEY' >> ./pass.json
+            gcloud compute ssh $USER_TEST@$VM_TEST --ssh-key-file=./pass.json --command="echo \"Image: $DOCKER_USERNAME/$IMAGE_NAME:$TAG\" >> ~/testing.txt"
