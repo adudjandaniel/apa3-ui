@@ -10,13 +10,6 @@ workflows:
                 - main
           requires:
             - build_test
-      - push_test:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - deploy
 
 jobs:
   build_test:
