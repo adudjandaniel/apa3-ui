@@ -76,5 +76,6 @@ jobs:
             echo '$PROJ_PUB' >> ./pass.txt.pub
             echo '$PROJ_KEY' >> ./pass.txt
             echo '$SERVICE_ACC_CRED' >> ./cred.json
+            cat ./cred.json
             gcloud auth activate-service-account $SERVICE_ACC_EMAIL --key-file=./cred.json --project=$GCP_PROJ
             gcloud compute ssh $USER_TEST@$VM_TEST --ssh-key-file=./pass.txt --command="echo \"Image: $DOCKER_USERNAME/$IMAGE_NAME:$TAG\" >> ~/testing.txt"
