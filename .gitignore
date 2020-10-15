@@ -81,3 +81,7 @@ plan.txt
 ip_address.txt
 website/vendor
 namecheap.tf
+
+
+# deployment update
+.update/*
