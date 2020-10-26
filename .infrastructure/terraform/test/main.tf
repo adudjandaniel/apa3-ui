@@ -35,15 +35,26 @@ resource "google_compute_firewall" "test-http-80" {
   }
 }
 
+resource "google_compute_firewall" "apa3-test-vpc-allow-ssh" {
+  name    = "apa3-test-vpc-allow-ssh"
+  network = google_compute_network.apa3_test_vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+}
+
 resource "google_compute_instance" "apa3-ui-vm-test" {
   name = "apa3-ui-vm-test"
+  allow_stopping_for_update = true
   machine_type = var.machine_types[var.environment]
   tags =[
       "web","apa3-ui-test"
   ]
 
   provisioner "local-exec" {
-    command = "echo ${google_compute_instance.apa3-ui-vm-test.name}: ${google_compute_instance.apa3-ui-vm-test.network_interface[0].access_config[0].nat_ip} >> ip_address.txt"
+    command = "echo ${google_compute_instance.apa3-ui-vm-test.name}: ${google_compute_instance.apa3-ui-vm-test.network_interface[0].access_config[0].nat_ip} > ip_address.txt"
   }
 
   boot_disk {
@@ -115,6 +126,11 @@ resource "google_compute_health_check" "apa3-ui-test-http-health-check" {
   }
 }
 
+resource "google_compute_address" "apa3_ui_test_lb_static_ip" {
+  name = "apa3-ui-test-lb-static-ip"
+  network_tier = "STANDARD"
+}
+
 resource "google_compute_backend_service" "apa3_ui_test_backend_service" {
   name          = "apa3-ui-test-backend-service"
   health_checks = [google_compute_health_check.apa3-ui-test-http-health-check.id]
@@ -125,11 +141,6 @@ resource "google_compute_backend_service" "apa3_ui_test_backend_service" {
   backend {
     group = google_compute_instance_group.apa3-test-instances.self_link
   }
-}
-
-resource "google_compute_address" "apa3_ui_test_lb_static_ip" {
-  name = "apa3-ui-test-lb-static-ip"
-  network_tier = "STANDARD"
 }
 
 resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend" {

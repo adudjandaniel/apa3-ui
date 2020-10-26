@@ -4,7 +4,7 @@ variable "credentials_file" {}
 
 variable "region" {
     type = string
-    default = "us-east4"
+    default = "us-east1"
 }
 
 variable "email_address" {
@@ -12,7 +12,7 @@ variable "email_address" {
 
 variable "zone" {
     type = string
-    default = "us-east4-b"
+    default = "us-east1-b"
 }
 
 variable "environment" {
@@ -32,8 +32,8 @@ variable "domain" {
 variable "machine_types" {
     type = map
     default = {
-        test = "g1-small"
-        prod = "g1-small"
+        test = "f1-micro"
+        prod = "f1-micro"
     }
 }
 
