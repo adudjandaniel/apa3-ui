@@ -75,8 +75,7 @@ resource "google_compute_instance" "apa3-ui-vm-test" {
 
   network_interface {
     network = google_compute_network.apa3_test_vpc.name
-    access_config {
-      nat_ip = google_compute_address.apa3_ui_vm_test_static_ip.address
+    access_config {      
     }
   }
 }
@@ -88,10 +87,6 @@ resource "google_dns_record_set" "apa3-test" {
   ttl          = 300
 
   rrdatas = [google_compute_address.apa3_ui_test_lb_static_ip.address]
-}
-
-resource "google_compute_address" "apa3_ui_vm_test_static_ip" {
-  name = "apa3-ui-test-static-ip"
 }
 
 resource "google_compute_instance_group" "apa3-test-instances" {
