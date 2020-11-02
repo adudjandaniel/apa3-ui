@@ -76,7 +76,6 @@ resource "google_compute_instance" "apa3-ui-vm-test" {
   network_interface {
     network = google_compute_network.apa3_test_vpc.name
     access_config {
-      nat_ip = google_compute_address.apa3_ui_vm_test_static_ip.address
     }
   }
 }
@@ -88,10 +87,6 @@ resource "google_dns_record_set" "apa3-test" {
   ttl          = 300
 
   rrdatas = [google_compute_address.apa3_ui_test_lb_static_ip.address]
-}
-
-resource "google_compute_address" "apa3_ui_vm_test_static_ip" {
-  name = "apa3-ui-test-static-ip"
 }
 
 resource "google_compute_instance_group" "apa3-test-instances" {
@@ -143,16 +138,16 @@ resource "google_compute_backend_service" "apa3_ui_test_backend_service" {
   }
 }
 
-resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend" {
-  name = "apa3-ui-test-lb-frontend"
-  region = var.region
-  ip_address = google_compute_address.apa3_ui_test_lb_static_ip.address
-  ip_protocol = "TCP"
-  load_balancing_scheme = "EXTERNAL"
-  network_tier = "STANDARD"
-  port_range = "80"
-  target = google_compute_target_http_proxy.apa3_ui_test_lb_proxy.id
-}
+# resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend" {
+#   name = "apa3-ui-test-lb-frontend"
+#   region = var.region
+#   ip_address = google_compute_address.apa3_ui_test_lb_static_ip.address
+#   ip_protocol = "TCP"
+#   load_balancing_scheme = "EXTERNAL"
+#   network_tier = "STANDARD"
+#   port_range = "80"
+#   target = google_compute_target_http_proxy.apa3_ui_test_lb_proxy.id
+# }
 
 resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend-ssl" {
   name = "apa3-ui-test-lb-frontend-ssl"
@@ -165,12 +160,12 @@ resource "google_compute_forwarding_rule" "apa3_ui_test_lb_frontend-ssl" {
   target = google_compute_target_https_proxy.apa3_ui_test_lb_proxy_ssl.id
 }
 
-resource "google_compute_target_http_proxy" "apa3_ui_test_lb_proxy" {
-  provider = google-beta
+# resource "google_compute_target_http_proxy" "apa3_ui_test_lb_proxy" {
+#   provider = google-beta
 
-  name    = "apa3-ui-test-lb-target-proxy"
-  url_map = google_compute_url_map.apa3_ui_test_url_map.id
-}
+#   name    = "apa3-ui-test-lb-target-proxy"
+#   url_map = google_compute_url_map.apa3_ui_test_url_map.id
+# }
 
 resource "google_compute_target_https_proxy" "apa3_ui_test_lb_proxy_ssl" {
   provider = google-beta
@@ -190,15 +185,15 @@ resource "google_compute_managed_ssl_certificate" "apa3_ui_test_lb_proxy_ssl_cer
   }
 }
 
-resource "google_compute_url_map" "apa3_ui_test_url_map" {
-  provider = google-beta
+# resource "google_compute_url_map" "apa3_ui_test_url_map" {
+#   provider = google-beta
 
-  name            = "apa3-ui-test-url-map"
-  default_url_redirect {
-    https_redirect = true
-    strip_query = false
-  }
-}
+#   name            = "apa3-ui-test-url-map"
+#   default_url_redirect {
+#     https_redirect = true
+#     strip_query = false
+#   }
+# }
 
 resource "google_compute_url_map" "apa3_ui_test_url_map_ssl" {
   provider = google-beta
