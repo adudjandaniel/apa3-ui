@@ -43,7 +43,7 @@ resource "google_compute_instance" "apa3-ui-vm" {
   ]
 
   provisioner "local-exec" {
-    command = "echo ${google_compute_instance.apa3-ui-vm.name}: ${google_compute_instance.apa3-ui-vm.network_interface[0].access_config[0].nat_ip} >> ip_address.txt"
+    command = "echo ${google_compute_instance.apa3-ui-vm.name}: ${google_compute_instance.apa3-ui-vm.network_interface[0].access_config[0].nat_ip} > ip_address.txt"
   }
 
   boot_disk {
@@ -65,7 +65,7 @@ resource "google_compute_instance" "apa3-ui-vm" {
   network_interface {
     network = google_compute_network.apa3_vpc.name
     access_config {
-      nat_ip = google_compute_address.apa3_ui_vm_static_ip.address
+      network_tier = "STANDARD"
     }
   }
 }
@@ -77,10 +77,6 @@ resource "google_dns_record_set" "apa3" {
   ttl          = 300
 
   rrdatas = [google_compute_address.apa3_ui_lb_static_ip.address]
-}
-
-resource "google_compute_address" "apa3_ui_vm_static_ip" {
-  name = "apa3-ui-static-ip"
 }
 
 resource "google_compute_instance_group" "apa3-instances" {
@@ -102,6 +98,16 @@ resource "google_compute_instance_group" "apa3-instances" {
   }
 
   zone = var.zone
+}
+
+resource "google_compute_firewall" "apa3-vpc-allow-ssh" {
+  name    = "apa3-vpc-allow-ssh"
+  network = google_compute_network.apa3_vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
 }
 
 resource "google_compute_health_check" "apa3-ui-http-health-check" {
