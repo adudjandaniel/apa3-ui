@@ -1,0 +1,48 @@
+.main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.page-content {
+    margin: 2em 6em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.start-parking {
+    padding: 10px;
+    border-radius: 20px;
+    border: 0.5px solid black;
+}
+button {
+    font-size: 0.9em;
+    outline: none;
+    background: none;
+    color: inherit;
+    border: none;
+}
+button:focus div,
+button:hover div {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+.div {
+    margin: 0;
+    font-size: 5em;
+    letter-spacing: 7px;
+    font-weight: lighter;
+  }
