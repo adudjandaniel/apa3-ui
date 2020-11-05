@@ -1,8 +1,62 @@
 <div class="main-content">
-
-    <button>
-        <div class="start-parking">Start Parking</div>
-    </button>
-
+    <div class="prototype-button-content">
+        <div [ngClass]="{
+                'step start-parking': true,
+                'hide-step': currentStep !== 'start-parking',
+                'show-step': currentStep === 'start-parking'
+            }">
+            <div>
+                <button (click)="selectStyle()">Start Parking</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step choose-parking-style': true,
+                'hide-step': currentStep !== 'choose-parking-style',
+                'show-step': currentStep === 'choose-parking-style'
+            }">
+            <div>
+                <button (click)="showSpot()">Parrallel Park</button>
+            </div>
+            <div>
+                <button (click)="showSpot()">Perpendicular Park</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step select-spot': true,
+                'hide-step': currentStep !== 'select-spot',
+                'show-step': currentStep === 'select-spot'
+            }">
+            <div>
+                <button (click)="selectExecutionLocation()">Spot A</button>
+            </div>
+            <div>
+                <button (click)="selectExecutionLocation()">Spot B</button>
+            </div>
+            <div>
+                <button (click)="selectExecutionLocation()">Spot C</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step select-execution-location': true,
+                'hide-step': currentStep !== 'select-execution-location',
+                'show-step': currentStep === 'select-execution-location'
+            }">
+            <div>
+                <button (click)="parkSuccess()">Switch to Ford Pass App</button>
+            </div>
+            <div>
+                <button (click)="parkSuccess()">Complete parking in Vehicle</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step parking-successful': true,
+                'hide-step': currentStep !== 'parking-successful',
+                'show-step': currentStep === 'parking-successful'
+            }">
+            <div>
+                <button (click)="startPark()">Parking Successfully Completed!<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+    </div>
 </div>
 
