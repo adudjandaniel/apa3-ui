@@ -15,23 +15,23 @@ export class PrototypeComponent implements OnInit {
   }
 
   startPark(): void {
-    this.currentStep = "start-parking";
+    this.currentStep = 'start-parking';
   }
 
   selectStyle(): void {
-    this.currentStep = "choose-parking-style";
+    this.currentStep = 'choose-parking-style';
   }
 
   showSpot(): void {
-    this.currentStep = "select-spot";
+    this.currentStep = 'select-spot';
   }
 
   selectExecutionLocation(): void {
-    this.currentStep = "select-execution-location"
+    this.currentStep = 'select-execution-location';
   }
 
   parkSuccess(): void {
-    this.currentStep = "parking-successful";
+    this.currentStep = 'parking-successful';
   }
 
 }
