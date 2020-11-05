@@ -6,7 +6,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./prototype.component.css']
 })
 export class PrototypeComponent implements OnInit {
-  currentStep : string;
+  currentStep: string;
 
   constructor() { }
 

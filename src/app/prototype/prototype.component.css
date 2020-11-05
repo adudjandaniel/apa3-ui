@@ -38,7 +38,8 @@ button {
     transition: color 0.4s, background-color 0.4s, transform 0.4s;
     text-align: center;
 }
-div.step div:hover button {
+div.step div:hover button,
+div.step div:focus button {
     color: white;
     background-color: black;
     cursor: pointer;
@@ -91,5 +92,11 @@ div.hide-step {
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 1s, opacity 1s;
+    }
+    div.hide-step {
+        display: none;
     }
 }
