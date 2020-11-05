@@ -14,7 +14,7 @@
     background-color: white;
     background-size: cover;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
@@ -85,6 +85,25 @@ div.hide-step {
 }
 .return-to-start {
     font-size: 0.6em;
+}
+div.cancel-park {
+    position: absolute;
+    top: 90%;
+    padding: 0 1em;
+}
+div.cancel-park button {
+    padding: 10px;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 0.8em;
+}
+div.cancel-park div:hover button,
+div.cancel-park div:focus button {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    transform: scale(1.05);
 }
 @media only screen and (max-width: 850px) {
     div.step {

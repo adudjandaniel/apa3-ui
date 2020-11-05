@@ -34,4 +34,7 @@ export class PrototypeComponent implements OnInit {
     this.currentStep = 'parking-successful';
   }
 
+  cancelPark(): void {
+    this.startPark();
+  }
 }

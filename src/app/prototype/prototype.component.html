@@ -58,5 +58,13 @@
             </div>
         </div>
     </div>
+    <div [ngClass]="{
+            'cancel-park': true,
+            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-parking'
+        }">
+        <div>
+            <button (click)="cancelPark()">Cancel</button>
+        </div>
+    </div>
 </div>
 
