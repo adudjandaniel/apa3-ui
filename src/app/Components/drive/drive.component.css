@@ -1,0 +1,80 @@
+body {
+    height: 100vh;
+}
+iframe {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    border: none;
+    height: 100%;
+}
+@keyframes hide-menu-animation {
+    from {
+        left: 20%;
+    }
+    to {
+        left: -20%;
+    }
+}
+@keyframes show-menu-animation {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+.menu {
+    z-index: 100;
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    left: 0;
+    top: 0%;
+    display: flex;
+    flex-direction: row;
+}
+div.show-hide-button-container {
+    position: relative;
+    top: 10%;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+div.show-hide-button-container button {
+    outline: none;
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    padding: 0;
+    border: 2px solid rgba(0, 0, 0, 0.742);
+    transform: rotate(-45deg);
+    border-right: 0 solid white;
+    border-bottom: 0 solid white;
+    margin-left: 5px;
+}
+div.hide div.menu-content {
+    display: none;
+}
+div.hide div.show-hide-button-container button {
+    transform: rotate(135deg);
+}
+div.show-hide-button-container button:hover {
+    cursor: pointer;
+}
+div.menu div.menu-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(251, 251, 253);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+div.menu div.menu-items {
+    margin: 3em 1em;
+}
