@@ -11,10 +11,10 @@ export class DriveComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.menuHidden = true
+    this.menuHidden = true;
   }
 
-  toggleMenuDisplay() : void {
+  toggleMenuDisplay(): void {
     this.menuHidden = !this.menuHidden;
   }
 
