@@ -95,10 +95,12 @@ div.menu-content button {
     margin: 5px 0;
     color: grey;
 }
-div.menu-content button:hover div.option {
+div.menu-content button:hover div.option,
+div.menu-content button:focus div.option {
     color: black;
 }
-div.menu-content button:hover div.icon-container {
+div.menu-content button:hover div.icon-container,
+div.menu-content button:focus div.icon-container {
     opacity: 1;
 }
 .icon-container {
