@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFileModel } from 'src/app/Models/base-file-model';
 import { DriveService } from 'src/app/Services/drive.service';
 
@@ -10,10 +11,9 @@ import { DriveService } from 'src/app/Services/drive.service';
 })
 export class DriveComponent implements OnInit {
   menuHidden: boolean;
-  currentFileUrl: SafeResourceUrl;
   files: Array<BaseFileModel>;
 
-  constructor(private driveService: DriveService, private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private route: ActivatedRoute, private driveService: DriveService) {
     this.driveService.getAllFiles()
       .subscribe((data: Array<BaseFileModel>) => {
         this.files = data;
@@ -28,9 +28,8 @@ export class DriveComponent implements OnInit {
     this.menuHidden = !this.menuHidden;
   }
 
-  openFile(fileUrl: string) {
-    this.currentFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(fileUrl);
-    console.log(this.currentFileUrl);
+  openFile(fileId: string) {
+    this.router.navigate([fileId], { relativeTo: this.route });
   }
 
 }

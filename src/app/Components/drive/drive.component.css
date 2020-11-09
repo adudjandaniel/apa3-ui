@@ -1,15 +1,6 @@
 body {
     height: 100vh;
 }
-iframe {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    outline: none;
-    border: none;
-    height: 100%;
-}
 .menu {
     z-index: 100;
     position: absolute;

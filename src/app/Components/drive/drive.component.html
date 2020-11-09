@@ -1,4 +1,4 @@
-<iframe *ngIf="currentFileUrl" [src]="currentFileUrl"></iframe>
+<router-outlet></router-outlet>
 <div [ngClass]="{
         menu: true,
         hide: menuHidden
@@ -16,7 +16,7 @@
                     <div class="file-content" *ngIf="file.subfiles">
                         <div class="files">
                             <div *ngFor="let basicFile of file.subfiles">
-                                <button (click)="openFile(basicFile.embedLink)">
+                                <button (click)="openFile(basicFile.id)">
                                     <div class="option">
                                         <div class="icon-container"></div>
                                         <div>{{basicFile.title}}</div>
@@ -34,7 +34,7 @@
                             <div class="file-content" *ngIf="folder.subfiles">
                                 <div class="files">
                                     <div *ngFor="let basicFile of folder.subfiles">
-                                        <button (click)="openFile(basicFile.embedLink)">
+                                        <button (click)="openFile(basicFile.id)">
                                             <div class="option">
                                                 <div class="icon-container"></div>
                                                 <div>{{basicFile.title}}</div>

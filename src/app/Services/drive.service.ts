@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 
 import { BaseFileModel } from '../Models/base-file-model';
 import { environment } from 'src/environments/environment';
+import { FileModel } from '../Models/file-model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class DriveService {
 
   getAllFiles(): Observable<Array<BaseFileModel>> {
     return this.http.get<Array<BaseFileModel>>(`${this.baseUrl}/drive`);
+  }
+
+  getFile(id: string): Observable<FileModel> {
+    return this.http.get<FileModel>(`${this.baseUrl}/drive/files/${id}`);
   }
 }
