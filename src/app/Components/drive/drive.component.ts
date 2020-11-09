@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BaseFileModel } from 'src/app/Models/base-file-model';
 import { DriveService } from 'src/app/Services/drive.service';
 
