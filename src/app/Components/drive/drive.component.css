@@ -76,7 +76,7 @@ div.menu div.menu-content {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-around;
-    overflow: hidden;
+    overflow: scroll;
 }
 div.menu div.menu-items {
     margin: 3em 1em;
