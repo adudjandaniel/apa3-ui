@@ -30,7 +30,7 @@ iframe {
     z-index: 100;
     position: absolute;
     height: 100%;
-    width: 20%;
+    min-width: 20%;
     left: 0;
     top: 0%;
     display: flex;
@@ -120,4 +120,9 @@ div.menu-content div.option {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+@media only screen and (max-width: 850px) {
+    div.show-hide-button-container {
+        opacity: 0.8;
+    }
 }
