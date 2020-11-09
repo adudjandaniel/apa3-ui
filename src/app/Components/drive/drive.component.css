@@ -10,22 +10,6 @@ iframe {
     border: none;
     height: 100%;
 }
-@keyframes hide-menu-animation {
-    from {
-        left: 20%;
-    }
-    to {
-        left: -20%;
-    }
-}
-@keyframes show-menu-animation {
-    from {
-        left: -100%;
-    }
-    to {
-        left: 100%;
-    }
-}
 .menu {
     z-index: 100;
     position: absolute;
@@ -109,10 +93,12 @@ div.menu-content button:focus div.icon-container {
 }
 div.folders button .icon-container {
     background-image: url("/assets/img/folder.png");
+    background-repeat: no-repeat;
     opacity: 0.5;
 }
 div.files button .icon-container {
     background-image: url("/assets/img/file.png");
+    background-repeat: no-repeat;
     opacity: 0.5;
 }
 div.menu-content div.option {
