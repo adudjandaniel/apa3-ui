@@ -3,9 +3,8 @@
     top: 50%;
     left: 50%;
     min-width: 100%;
-    min-height: 100%;
     width: auto;
-    height: auto;
+    height: 100vh;
     z-index: -100;
     -ms-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
@@ -53,6 +52,7 @@ div.step {
     visibility: visible;
     opacity: 1;
     transition: visibility 1s, opacity 1s;
+    width: 100%;
 }
 div.step div {
     margin: 1em;
@@ -63,6 +63,9 @@ div.choose-parking-style button {
 .prototype-button-content {
     min-width: 50%;
     min-height: 50%;
+    display: flex;
+    justify-content: space-around;
+    
 }
 @keyframes show-step-animation {
     from {
@@ -109,7 +112,7 @@ div.cancel-park div:focus button {
     div.step {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         visibility: visible;
         opacity: 1;
