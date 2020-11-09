@@ -1,16 +1,52 @@
-<iframe src="https://docs.google.com/document/d/160Hltg69Udr7_dMCauk110O6-3LcATKH5opwIlnfSV8/preview?ouid=114901462607028832488"></iframe>
+<iframe *ngIf="currentFileUrl" [src]="currentFileUrl"></iframe>
 <div [ngClass]="{
         menu: true,
         hide: menuHidden
     }">
     <div class="menu-content">
         <div class="menu-items">
-            <ul>
-                <li>File 1</li>
-                <li>File 1</li>
-                <li>File 1</li>
-                <li>File 1</li>
-            </ul>
+            <div *ngIf="files">
+                <div *ngFor="let file of files" class="folders">
+                    <button>
+                        <div class="option">
+                            <div class="icon-container"></div>
+                            <div>{{file.title}}</div>
+                        </div>
+                    </button>
+                    <div class="file-content" *ngIf="file.subfiles">
+                        <div class="files">
+                            <div *ngFor="let basicFile of file.subfiles">
+                                <button (click)="openFile(basicFile.embedLink)">
+                                    <div class="option">
+                                        <div class="icon-container"></div>
+                                        <div>{{basicFile.title}}</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="folders" *ngFor="let folder of file.subfolders">
+                            <button>
+                                <div class="option">
+                                    <div class="icon-container"></div>
+                                    <div>{{folder.title}}</div>
+                                </div>
+                            </button>
+                            <div class="file-content" *ngIf="folder.subfiles">
+                                <div class="files">
+                                    <div *ngFor="let basicFile of folder.subfiles">
+                                        <button (click)="openFile(basicFile.embedLink)">
+                                            <div class="option">
+                                                <div class="icon-container"></div>
+                                                <div>{{basicFile.title}}</div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="show-hide-button-container">

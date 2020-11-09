@@ -60,12 +60,12 @@ div.show-hide-button-container button {
     margin-left: 5px;
 }
 div.hide div.menu-content {
-    display: none;
+    display: none !important;
 }
 div.hide div.show-hide-button-container button {
     transform: rotate(135deg);
 }
-div.show-hide-button-container button:hover {
+button {
     cursor: pointer;
 }
 div.menu div.menu-content {
@@ -74,7 +74,48 @@ div.menu div.menu-content {
     height: 100%;
     background-color: rgb(251, 251, 253);
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
 }
 div.menu div.menu-items {
     margin: 3em 1em;
+}
+div.files,
+div.folders {
+    margin-left: 1em;
+}
+div.folders {
+    margin-top: 0.5em;
+}
+div.menu-content button {
+    outline: none;
+    border: none;
+    background-color: inherit;
+    margin: 5px 0;
+    color: grey;
+}
+div.menu-content button:hover div.option {
+    color: black;
+}
+div.menu-content button:hover div.icon-container {
+    opacity: 1;
+}
+.icon-container {
+    width: 20px;
+    height: 20px;
+}
+div.folders button .icon-container {
+    background-image: url("/assets/img/folder.png");
+    opacity: 0.5;
+}
+div.files button .icon-container {
+    background-image: url("/assets/img/file.png");
+    opacity: 0.5;
+}
+div.menu-content div.option {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
