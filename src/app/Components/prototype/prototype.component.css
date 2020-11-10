@@ -37,6 +37,17 @@ button {
     transition: color 0.4s, background-color 0.4s, transform 0.4s;
     text-align: center;
 }
+div.step-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div.step-title {
+    color: black;
+    position: absolute;
+    top: 30%;
+}
 div.step div:hover button,
 div.step div:focus button {
     color: white;
@@ -109,6 +120,9 @@ div.cancel-park div:focus button {
     transform: scale(1.05);
 }
 @media only screen and (max-width: 850px) {
+    div.step-title {
+        top: 15%;
+    }
     div.step {
         display: flex;
         flex-direction: column;

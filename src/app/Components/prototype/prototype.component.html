@@ -1,18 +1,21 @@
 <div class="main-content">
     <div class="prototype-button-content">
         <div [ngClass]="{
-                'step select-scenario': true,
+                'step-wrapper': true,
                 'hide-step': currentStep !== 'select-scenario',
                 'show-step': currentStep === 'select-scenario'
             }">
-            <div>
-                <button (click)="startPark('no-spots-scenario')">No spots found</button>
-            </div>
-            <div>
-                <button (click)="startPark('successful-park-scenario')">Successful parking</button>
-            </div>
-            <div>
-                <button (click)="startPark('interrupted-park-scenario')">Interrupted parking</button>
+            <div class="step-title"><h4>Select Scenario</h4></div>
+            <div class="step">
+                <div>
+                    <button (click)="startPark('no-spots-scenario')">No spots found</button>
+                </div>
+                <div>
+                    <button (click)="startPark('successful-park-scenario')">Successful parking</button>
+                </div>
+                <div>
+                    <button (click)="startPark('interrupted-park-scenario')">Interrupted parking</button>
+                </div>
             </div>
         </div>
         <div [ngClass]="{
