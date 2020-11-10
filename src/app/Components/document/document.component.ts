@@ -16,7 +16,8 @@ export class DocumentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      var fileId = params['id'];
+      const idParam = 'id';
+      const fileId = params[idParam];
       if (fileId) {
         this.driveService.getFile(fileId).subscribe((file: FileModel) => {
           this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(file.embedLink);
