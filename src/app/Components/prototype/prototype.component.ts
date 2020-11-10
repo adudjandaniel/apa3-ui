@@ -6,15 +6,21 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./prototype.component.css']
 })
 export class PrototypeComponent implements OnInit {
+  currentScenario: string;
   currentStep: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.startPark();
+    this.selectScenario();
   }
 
-  startPark(): void {
+  selectScenario(): void {
+    this.currentStep = 'select-scenario';
+  }
+
+  startPark(scenario: string): void {
+    this.currentScenario = scenario;
     this.currentStep = 'start-parking';
   }
 
@@ -23,6 +29,10 @@ export class PrototypeComponent implements OnInit {
   }
 
   showSpot(): void {
+    if (this.currentScenario === 'no-spots-scenario') {
+      this.currentStep = 'no-spot';
+      return;
+    }
     this.currentStep = 'select-spot';
   }
 
@@ -31,10 +41,14 @@ export class PrototypeComponent implements OnInit {
   }
 
   parkSuccess(): void {
+    if (this.currentScenario === 'interrupted-park-scenario') {
+      this.currentStep = 'not-safe';
+      return;
+    }
     this.currentStep = 'parking-successful';
   }
 
   cancelPark(): void {
-    this.startPark();
+    this.selectScenario();
   }
 }

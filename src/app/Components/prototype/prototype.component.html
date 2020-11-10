@@ -1,6 +1,21 @@
 <div class="main-content">
     <div class="prototype-button-content">
         <div [ngClass]="{
+                'step select-scenario': true,
+                'hide-step': currentStep !== 'select-scenario',
+                'show-step': currentStep === 'select-scenario'
+            }">
+            <div>
+                <button (click)="startPark('no-spots-scenario')">No spots found</button>
+            </div>
+            <div>
+                <button (click)="startPark('successful-park-scenario')">Successful parking</button>
+            </div>
+            <div>
+                <button (click)="startPark('interrupted-park-scenario')">Interrupted parking</button>
+            </div>
+        </div>
+        <div [ngClass]="{
                 'step start-parking': true,
                 'hide-step': currentStep !== 'start-parking',
                 'show-step': currentStep === 'start-parking'
@@ -54,13 +69,31 @@
                 'show-step': currentStep === 'parking-successful'
             }">
             <div>
-                <button (click)="startPark()">Parking Successfully Completed!<br><span class="return-to-start">Return to start</span></button>
+                <button (click)="selectScenario()">Parking Successfully Completed!<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step no-spot': true,
+                'hide-step': currentStep !== 'no-spot',
+                'show-step': currentStep === 'no-spot'
+            }">
+            <div>
+                <button (click)="selectScenario()">Sorry; no spots found<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step not-safe': true,
+                'hide-step': currentStep !== 'not-safe',
+                'show-step': currentStep === 'not-safe'
+            }">
+            <div>
+                <button (click)="selectScenario()">Sorry; cannot safely park<br><span class="return-to-start">Return to start</span></button>
             </div>
         </div>
     </div>
     <div [ngClass]="{
             'cancel-park': true,
-            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-parking'
+            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-parking' || currentStep === 'select-scenario' || currentStep === 'not-safe' || currentStep === 'no-spot'
         }">
         <div>
             <button (click)="cancelPark()">Cancel</button>
