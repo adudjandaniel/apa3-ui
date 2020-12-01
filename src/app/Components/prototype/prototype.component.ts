@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { HmiStep } from 'src/app/Models/hmi-step';
 
 @Component({
   selector: 'app-prototype',
@@ -6,49 +7,51 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./prototype.component.css']
 })
 export class PrototypeComponent implements OnInit {
-  currentScenario: string;
-  currentStep: string;
-
-  constructor() { }
+  animationState: string;
+  scenario: string;
+  parkingType: string;
+  spot: string;
+  
+  constructor() { 
+    this.restart();
+  }
 
   ngOnInit(): void {
-    this.selectScenario();
   }
 
-  selectScenario(): void {
-    this.currentStep = 'select-scenario';
+  restart() {
+    this.scenario = '';
+    this.animationState = 'inactive';
+    this.parkingType = '';
+    this.spot = '';
   }
 
-  startPark(scenario: string): void {
-    this.currentScenario = scenario;
-    this.currentStep = 'start-parking';
-  }
+  handleHmiState(step: HmiStep): void {
+    const completeTag = '-complete';
+    console.log("HmiStep: ", step);
 
-  selectStyle(): void {
-    this.currentStep = 'choose-parking-style';
-  }
-
-  showSpot(): void {
-    if (this.currentScenario === 'no-spots-scenario') {
-      this.currentStep = 'no-spot';
-      return;
+    switch (step.name) {
+      case "start-apa": {
+        this.scenario = step.value;
+        break;
+      }
+      case "initialize-parking-style": {
+        this.parkingType = step.value;
+        // this.animationState = step.name + completeTag;
+        break;
+      }
+      case "parking": {
+        this.animationState = step.name + completeTag;
+        break;
+      }
+      case "restart": {
+        this.restart();
+        break;
+      }
     }
-    this.currentStep = 'select-spot';
   }
 
-  selectExecutionLocation(): void {
-    this.currentStep = 'select-execution-location';
-  }
+  parkVehicle(spot: string): void {
 
-  parkSuccess(): void {
-    if (this.currentScenario === 'interrupted-park-scenario') {
-      this.currentStep = 'not-safe';
-      return;
-    }
-    this.currentStep = 'parking-successful';
-  }
-
-  cancelPark(): void {
-    this.selectScenario();
   }
 }

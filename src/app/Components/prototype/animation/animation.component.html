@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div [ngClass]="{
+        'perpendicular-park': parkingType === 'perpendicular',
+        'no-display': parkingType !== 'perpendicular'
+    }">
+        <div class="vehicle-wrap parked-1">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div class="vehicle-wrap parked-2">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div [ngClass]="{
+            'vehicle-wrap': true, 
+            'parked-3': true, 
+            'spot-a': showSpots
+        }">
+            <img [ngClass]="{
+                'vehicle': true, 
+                'no-display': scenario !== 'no-spots-scenario'
+            }" src="/assets/img/vehicle.png">
+        </div>
+        <div class="vehicle-wrap parked-4">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div [ngClass]="{
+            'vehicle-wrap': true, 
+            'parked-5': true, 
+            'spot-b': showSpots
+        }">
+        </div>
+        <div class="vehicle-wrap parked-6">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div class="vehicle-wrap-parking">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+    </div>
+    <div [ngClass]="{
+        'parallel-park': parkingType === 'parallel',
+        'no-display': parkingType !== 'parallel'
+    }">
+        <div class="vehicle-wrap parked-1">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div [ngClass]="{
+            'vehicle-wrap': true, 
+            'parked-2': true, 
+            'spot-a': showSpots
+        }">
+            <img [ngClass]="{
+                'vehicle': true,
+                'no-display': scenario !== 'no-spots-scenario'
+            }" src="/assets/img/vehicle.png">
+        </div>
+        <div class="vehicle-wrap parked-3">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+        <div class="vehicle-wrap-parking">
+            <img class="vehicle" src="/assets/img/vehicle.png">
+        </div>
+    </div>
+</div>

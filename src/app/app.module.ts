@@ -8,6 +8,8 @@ import { PrototypeComponent } from './Components/prototype/prototype.component';
 import { HomeComponent } from './Components/home/home.component';
 import { DriveComponent } from './Components/drive/drive.component';
 import { DocumentComponent } from './Components/document/document.component';
+import { HmiComponent } from './Components/prototype/hmi/hmi.component';
+import { AnimationComponent } from './Components/prototype/animation/animation.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { DocumentComponent } from './Components/document/document.component';
     PrototypeComponent,
     HomeComponent,
     DriveComponent,
-    DocumentComponent
+    DocumentComponent,
+    HmiComponent,
+    AnimationComponent
   ],
   imports: [
     BrowserModule,

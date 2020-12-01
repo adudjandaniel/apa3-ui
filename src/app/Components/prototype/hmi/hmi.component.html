@@ -1,0 +1,112 @@
+<div class="main-content">
+    <div class="prototype-button-content">
+        <div [ngClass]="{
+                'step-wrapper': true,
+                'hide-step': currentStep !== 'select-scenario',
+                'show-step': currentStep === 'select-scenario'
+            }">
+            <div class="step-title"><p>Select Scenario</p></div>
+            <div class="step">
+                <div>
+                    <button (click)="startAPA('no-spots-scenario')">No spots found</button>
+                </div>
+                <div>
+                    <button (click)="startAPA('successful-park-scenario')">Successful parking</button>
+                </div>
+                <div>
+                    <button (click)="startAPA('interrupted-park-scenario')">Interrupted parking</button>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step start-apa': true,
+                'hide-step': currentStep !== 'start-apa',
+                'show-step': currentStep === 'start-apa'
+            }">
+            <div>
+                <button (click)="selectStyle()">Start APA</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step choose-parking-style': true,
+                'hide-step': currentStep !== 'choose-parking-style',
+                'show-step': currentStep === 'choose-parking-style'
+            }">
+            <div>
+                <button (click)="initiatializeParkingStyle('parallel')">Parrallel Park</button>
+            </div>
+            <div>
+                <button (click)="initiatializeParkingStyle('perpendicular')">Perpendicular Park</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step select-spot': true,
+                'hide-step': currentStep !== 'select-spot',
+                'show-step': currentStep === 'select-spot'
+            }">
+            <div>
+                <button (click)="selectExecutionLocation('A')">Spot A</button>
+            </div>
+            <div>
+                <button (click)="selectExecutionLocation('B')">Spot B</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step select-execution-location': true,
+                'hide-step': currentStep !== 'select-execution-location',
+                'show-step': currentStep === 'select-execution-location'
+            }">
+            <div>
+                <button (click)="beginParking()">Switch to Ford Pass App</button>
+            </div>
+            <div>
+                <button (click)="beginParking()">Complete parking in Vehicle</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step begin-parking': true,
+                'hide-step': currentStep !== 'begin-parking',
+                'show-step': currentStep === 'begin-parking'
+            }">
+            <div>
+                <button (click)="initiateParkingProcedure()">Begin Parking</button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step parking-successful': true,
+                'hide-step': currentStep !== 'parking-successful',
+                'show-step': currentStep === 'parking-successful'
+            }">
+            <div>
+                <button (click)="selectScenario()">Parking Successfully Completed!<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step no-spot': true,
+                'hide-step': currentStep !== 'no-spot',
+                'show-step': currentStep === 'no-spot'
+            }">
+            <div>
+                <button (click)="selectScenario()">Sorry; no spots found<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+        <div [ngClass]="{
+                'step not-safe': true,
+                'hide-step': currentStep !== 'not-safe',
+                'show-step': currentStep === 'not-safe'
+            }">
+            <div>
+                <button (click)="selectScenario()">Sorry; cannot safely park<br><span class="return-to-start">Return to start</span></button>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="{
+            'cancel-park': true,
+            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-apa' || currentStep === 'select-scenario' || currentStep === 'not-safe' || currentStep === 'no-spot'
+        }">
+        <div>
+            <button (click)="cancelPark()">Cancel</button>
+        </div>
+    </div>
+</div>
+
