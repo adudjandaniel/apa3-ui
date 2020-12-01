@@ -23,7 +23,6 @@
 }
 .perpendicular-park .vehicle-wrap.parked-6 {
     top: 80%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap-parking {
     left: 40%;
@@ -38,13 +37,13 @@
     top: 70%;
 }
 .parallel-park .vehicle-wrap {
-    left: 55%;
+    left: 45%;
 }
 .perpendicular-park .vehicle-wrap {
-    left: 60%;
+    left: 55%;
 }
 .parallel-park .vehicle-wrap-parking {
-    left: 45%;
+    left: 35%;
 }
 .vehicle-wrap {
     width: 200px;
@@ -112,7 +111,39 @@
     position: absolute;
     width: 100%;
 }
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1050px) {
+    .parallel-park .vehicle-wrap-parking {
+        left: 30%;
+    }
+    .perpendicular-park .vehicle-wrap-parking {
+        left: 20%;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .vehicle-wrap {
+        width: 150px;
+        height: 80px;
+    }
+    .vehicle-wrap-parking {
+        position: absolute;
+        top: 100%;
+        width: 150px;
+        height: 80px;
+    }
+    .parallel-park .vehicle-wrap-parking {
+        left: 15%;
+    }
+    .parallel-park .vehicle-wrap {
+        left: 45%;
+    }
+    .perpendicular-park .vehicle-wrap {
+        left: 55%;
+    }
+    .perpendicular-park .vehicle-wrap-parking {
+        left: 10%;
+    }
+}
+@media only screen and (max-width: 350px) {
     .vehicle-wrap {
         width: 100px;
         height: 45px;
@@ -122,10 +153,6 @@
         top: 100%;
         width: 100px;
         height: 45px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: rotate(90deg);
     }
     .parallel-park .vehicle-wrap-parking {
         left: 25%;
@@ -133,7 +160,10 @@
     .parallel-park .vehicle-wrap {
         left: 45%;
     }
+    .perpendicular-park .vehicle-wrap {
+        left: 55%;
+    }
     .perpendicular-park .vehicle-wrap-parking {
-        left: 25%;
+        left: 20%;
     }
 }

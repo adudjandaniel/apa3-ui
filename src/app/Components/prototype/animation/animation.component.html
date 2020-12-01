@@ -31,8 +31,10 @@
         <div class="vehicle-wrap parked-6">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
-        <div [@prepPerpendicularPark]="parkingType === 'perpendicular' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  
-            (@prepPerpendicularPark.done)="prepParkDone($event)" 
+        <div [@prepPerpendicularPark]="parkingType === 'perpendicular' && scenario !== 'no-spots-scenario' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  
+            (@prepPerpendicularPark.done)="prepParkDone($event)"
+            [@prepPerpendicularParkNoSpots]="parkingType === 'perpendicular' && scenario === 'no-spots-scenario' ? 'perpendicular-park-before-parking-no-spots' : 'perpendicular-park-start-no-spots'" 
+            (@prepPerpendicularParkNoSpots.done)="prepParkDone($event)"
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">

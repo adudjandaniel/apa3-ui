@@ -8,24 +8,35 @@ import { trigger, state, style, animate, transition, AnimationEvent } from '@ang
   animations: [
     trigger('prepParallelPark', [
       state('parallel-park-start', style({
-        top: '100%'
+        top: '40%'
       })),
       state('parallel-park-before-parking', style({
         top: '40%'
       })),
       transition('parallel-park-start => parallel-park-before-parking', [
-        animate('3s')
+        animate('2s')
       ])
     ]),
     trigger('prepPerpendicularPark', [
       state('perpendicular-park-start', style({
-        top: '100%'
+        top: '50%'
       })),
       state('perpendicular-park-before-parking', style({
-        top: '35%'
+        top: '50%'
       })),
       transition('perpendicular-park-start => perpendicular-park-before-parking', [
-        animate('3s')
+        animate('2s')
+      ])
+    ]),
+    trigger('prepPerpendicularParkNoSpots', [
+      state('perpendicular-park-start-no-spots', style({
+        top: '30%'
+      })),
+      state('perpendicular-park-before-parking-no-spots', style({
+        top: '30%'
+      })),
+      transition('perpendicular-park-start-no-spots => perpendicular-park-before-parking-no-spots', [
+        animate('2s')
       ])
     ]),
     trigger('completeParallelPark', [
