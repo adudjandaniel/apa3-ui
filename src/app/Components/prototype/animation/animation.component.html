@@ -36,6 +36,8 @@
             (@prepPerpendicularPark.done)="prepParkDone($event)"
             [@prepPerpendicularParkNoSpots]="parkingType === 'perpendicular' && scenario === 'no-spots-scenario' ? 'perpendicular-park-before-parking-no-spots' : 'perpendicular-park-start-no-spots'" 
             (@prepPerpendicularParkNoSpots.done)="prepParkDone($event)"
+            [@completePerpendicularParkA]="parkingType === 'perpendicular' && spot === 'A' && park ? 'perpendicular-park-final-A' : 'perpendicular-park-before-parking'"  
+            (@completePerpendicularParkA.done)="parkDone($event)"
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">
@@ -63,7 +65,7 @@
         </div>
         <div [@prepParallelPark]="parkingType === 'parallel' ? 'parallel-park-before-parking' : 'parallel-park-start'"  
             (@prepParallelPark.done)="prepParkDone($event)"
-            [@completeParallelPark]="spot === 'A' && park ? 'parallel-park-final' : 'parallel-park-before-parking'"  
+            [@completeParallelPark]="parkingType === 'parallel' && spot === 'A' && park ? 'parallel-park-final' : 'parallel-park-before-parking'"  
             (@completeParallelPark.done)="parkDone($event)"
             class="vehicle-wrap-parking"
             >
