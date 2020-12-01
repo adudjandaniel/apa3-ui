@@ -15,7 +15,7 @@ div.parallel-park, div.perpendicular-park {
     visibility: visible;
     opacity: 1;
     transition: visibility 1s, opacity 1s;
-    animation-name: show-spot-animation;
+    animation-name: show-animation;
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-iteration-count: 1;
@@ -31,12 +31,12 @@ div.parallel-park, div.perpendicular-park {
     opacity: 1;
     transition: visibility 1s, opacity 1s;
     border: solid 1px black;
-    animation-name: show-spot-animation;
+    animation-name: show-animation;
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-iteration-count: 1;
 }
-@keyframes show-spot-animation {
+@keyframes show-animation {
     from {
         visibility: hidden;
         opacity: 0; 
