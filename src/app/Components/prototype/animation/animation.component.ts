@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
-import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'app-prototype-animation',
