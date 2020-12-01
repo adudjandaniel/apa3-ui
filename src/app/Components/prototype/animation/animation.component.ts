@@ -80,13 +80,18 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
 
     trigger('completePerpendicularParkB', [
       state('perpendicular-park-before-parking', style({
-
+        top: '50%'
       })),
       state('perpendicular-park-final-B', style({
-
+        top: '65%',
+        left: '55%',
+        transform: 'rotate(0deg)'
       })),
       transition('perpendicular-park-before-parking => perpendicular-park-final-B', [
-        animate('3s')
+        animate('5s', keyframes([
+          style({top: '65%', transform: 'rotate(5deg)', left: '45%', offset: 0.7}),
+          style({top: '65%', transform: 'rotate(0deg)', left: '55%', offset: 1})
+        ]))
       ])
     ])
   ]

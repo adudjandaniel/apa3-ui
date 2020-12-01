@@ -38,6 +38,8 @@
             (@prepPerpendicularParkNoSpots.done)="prepParkDone($event)"
             [@completePerpendicularParkA]="parkingType === 'perpendicular' && spot === 'A' && park ? 'perpendicular-park-final-A' : 'perpendicular-park-before-parking'"  
             (@completePerpendicularParkA.done)="parkDone($event)"
+            [@completePerpendicularParkB]="parkingType === 'perpendicular' && spot === 'B' && park ? 'perpendicular-park-final-B' : 'perpendicular-park-before-parking'"  
+            (@completePerpendicularParkB.done)="parkDone($event)"
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">
