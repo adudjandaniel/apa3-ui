@@ -93,26 +93,55 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
           style({top: '65%', transform: 'rotate(0deg)', left: '55%', offset: 1})
         ]))
       ])
+    ]),
+
+    trigger('interruptedParkNonObstacle', [
+      state('before-parking', style({
+
+      })),
+      state('park-final', style({
+
+      })),
+      transition('before-parking => park-final', [
+        animate('3s')
+      ])
     ])
   ]
 })
 export class AnimationComponent implements OnInit, OnChanges {
   @Output() animationStatus: EventEmitter<boolean>;
+  @Output() interruptionState: EventEmitter<string>;
   @Input() scenario: string;
   @Input() parkingType: string;
   @Input() spot: string;
   @Input() park: boolean;
   showSpots: boolean;
+  interruption: string;
+  hideInterruptionSet: boolean;
 
   constructor() {
     this.animationStatus = new EventEmitter<boolean>();
+    this.interruptionState = new EventEmitter<string>();
+    this.reset();
+  }
+
+  reset() {
+    this.interruption = '';
     this.showSpots = false;
+    this.hideInterruptionSet = true;
   }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    for (const propertyName in changes) {
+      if (propertyName === 'park') {
+        if (this.park === true) {
+          this.hideInterruptionSet = false;
+        }
+      }
+    }
   }
 
   prepParkDone(event: AnimationEvent): void {
@@ -121,7 +150,17 @@ export class AnimationComponent implements OnInit, OnChanges {
   }
 
   parkDone(event: AnimationEvent): void {
-    this.showSpots = false;
+    this.reset();
     this.animationStatus.emit(true);
+  }
+
+  interruptedParkDone(event: AnimationEvent): void {
+    this.interruptionState.emit(this.interruption);
+    this.reset();
+  }
+
+  setInterruption(interruption: string) {
+    this.interruption = interruption;
+    this.hideInterruptionSet = true;
   }
 }

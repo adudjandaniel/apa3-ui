@@ -96,7 +96,7 @@
                 'show-step': currentStep === 'not-safe'
             }">
             <div>
-                <button (click)="selectScenario()">Sorry; cannot safely park<br><span class="return-to-start">Return to start</span></button>
+                <button (click)="selectScenario()">Cannot safely park - {{interruption}}<br><span class="return-to-start">Return to start</span></button>
             </div>
         </div>
         <div [ngClass]="{

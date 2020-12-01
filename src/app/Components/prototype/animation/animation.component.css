@@ -178,6 +178,41 @@ div.parallel-park, div.perpendicular-park {
     width: 100%;
     z-index: 100;
 }
+.interruption-set {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+    animation-name: show-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+}
+button {
+    padding: 0.6em 1em;
+    border: 0.5px solid black;
+    font-size: 0.9em;
+    color: black;
+    outline: none;
+    background-color: white;
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    transform: scale(1);
+    -webkit-transition: color 0.4s, background-color 0.4s, transform 0.4s;
+    -moz-transition: color 0.4s, background-color 0.4s, transform 0.4s;
+    -o-transition: color 0.4s, background-color 0.4s, transform 0.4s;
+    -ms-transition: color 0.4s, background-color 0.4s, transform 0.4s;
+    transition: color 0.4s, background-color 0.4s, transform 0.4s;
+    text-align: center;
+}
+button:hover, button:focus {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
 @media only screen and (max-width: 1050px) {
     .parallel-park .vehicle-wrap-parking {
         left: 30%;

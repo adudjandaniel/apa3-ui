@@ -1,4 +1,12 @@
 <div class="main-content">
+    <div *ngIf="scenario === 'interrupted-park-scenario' && park" [ngClass]="{
+        'interruption-set': true,
+        'no-display': hideInterruptionSet
+    }">
+        <button (click)="setInterruption('cyber')">Cyber Attack</button>
+        <button (click)="setInterruption('obstacle')">Obstacle</button>
+        <button (click)="setInterruption('sensor')">Sensor Failure</button>
+    </div>
     <div [ngClass]="{
         'perpendicular-park': parkingType === 'perpendicular',
         'no-display': parkingType !== 'perpendicular'
@@ -34,12 +42,19 @@
         </div>
         <div [@prepPerpendicularPark]="parkingType === 'perpendicular' && scenario !== 'no-spots-scenario' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  
             (@prepPerpendicularPark.done)="prepParkDone($event)"
+
             [@prepPerpendicularParkNoSpots]="parkingType === 'perpendicular' && scenario === 'no-spots-scenario' ? 'perpendicular-park-before-parking-no-spots' : 'perpendicular-park-start-no-spots'" 
             (@prepPerpendicularParkNoSpots.done)="prepParkDone($event)"
-            [@completePerpendicularParkA]="parkingType === 'perpendicular' && spot === 'A' && park ? 'perpendicular-park-final-A' : 'perpendicular-park-before-parking'"  
+
+            [@completePerpendicularParkA]="parkingType === 'perpendicular' && spot === 'A' && park && scenario !== 'interrupted-park-scenario' ? 'perpendicular-park-final-A' : 'perpendicular-park-before-parking'"  
             (@completePerpendicularParkA.done)="parkDone($event)"
-            [@completePerpendicularParkB]="parkingType === 'perpendicular' && spot === 'B' && park ? 'perpendicular-park-final-B' : 'perpendicular-park-before-parking'"  
+
+            [@completePerpendicularParkB]="parkingType === 'perpendicular' && spot === 'B' && park && scenario !== 'interrupted-park-scenario' ? 'perpendicular-park-final-B' : 'perpendicular-park-before-parking'"  
             (@completePerpendicularParkB.done)="parkDone($event)"
+
+            [@interruptedParkNonObstacle]="interruption !== '' && interruption !== 'obstacle' && parkingType === 'perpendicular' && (spot === 'A' || spot === 'B') && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"  
+            (@interruptedParkNonObstacle.done)="interruptedParkDone($event)"
+            
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">
@@ -67,8 +82,13 @@
         </div>
         <div [@prepParallelPark]="parkingType === 'parallel' ? 'parallel-park-before-parking' : 'parallel-park-start'"  
             (@prepParallelPark.done)="prepParkDone($event)"
-            [@completeParallelPark]="parkingType === 'parallel' && spot === 'A' && park ? 'parallel-park-final' : 'parallel-park-before-parking'"  
+
+            [@completeParallelPark]="parkingType === 'parallel' && spot === 'A' && park && scenario !== 'interrupted-park-scenario' ? 'parallel-park-final' : 'parallel-park-before-parking'"  
             (@completeParallelPark.done)="parkDone($event)"
+
+            [@interruptedParkNonObstacle]="interruption !== '' && interruption != 'obstacle' && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"  
+            (@interruptedParkNonObstacle.done)="interruptedParkDone($event)"
+
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">

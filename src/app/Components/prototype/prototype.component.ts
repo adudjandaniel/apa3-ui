@@ -65,4 +65,10 @@ export class PrototypeComponent implements OnInit {
       this.animationState = this.hmiStep.name + this.completeTag;
     }
   }
+
+  interruptionStateUpdate(interruption: string): void {
+    if (interruption !== '') {
+      this.animationState = `${interruption}-interruption`;
+    }
+  }
 }

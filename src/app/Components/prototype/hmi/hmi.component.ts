@@ -14,9 +14,11 @@ export class HmiComponent implements OnInit, OnChanges {
   currentStep: string;
   parkingType: string;
   selectedSpot: string;
+  interruption: string;
 
   constructor() {
     this.awaitState = new EventEmitter<HmiStep>();
+    this.interruption = '';
   }
 
   ngOnInit(): void {
@@ -41,6 +43,21 @@ export class HmiComponent implements OnInit, OnChanges {
         break;
       }
       case 'parking-complete': {
+        this.parkSuccess();
+        break;
+      }
+      case 'cyber-interruption': {
+        this.interruption = 'Cyber Attack';
+        this.parkSuccess();
+        break;
+      }
+      case 'obstacle-interruption': {
+        this.interruption = 'Obstacle';
+        this.parkSuccess();
+        break;
+      }
+      case 'sensor-interruption': {
+        this.interruption = 'Sensor Failure';
         this.parkSuccess();
         break;
       }
