@@ -51,17 +51,20 @@
         <div [ngClass]="{
             'vehicle-wrap': true, 
             'parked-2': true,
-            'spot': showSpots && scenario !== 'no-spots-scenario', 
-            'spot-a': showSpots && spot === 'A'
+            'spot': showSpots && scenario !== 'no-spots-scenario'
         }">
-            <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
-            <p class="spot-label" *ngIf="showSpots">A</p>
+            <div [ngClass]="{'spot-a': showSpots && spot === 'A', 'same-size-wrapper': true}">
+                <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
+                <p class="spot-label" *ngIf="showSpots">A</p>
+            </div>
         </div>
         <div class="vehicle-wrap parked-3">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
         <div [@prepParallelPark]="parkingType === 'parallel' ? 'parallel-park-before-parking' : 'parallel-park-start'"  
-            (@prepParallelPark.done)="prepParkDone($event)" 
+            (@prepParallelPark.done)="prepParkDone($event)"
+            [@completeParallelPark]="spot === 'A' && park ? 'parallel-park-final' : 'parallel-park-before-parking'"  
+            (@completeParallelPark.done)="parkDone($event)"
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">

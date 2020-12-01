@@ -7,7 +7,7 @@
     display: none;
 }
 .spot-label {
-    color: black;
+    color: inherit;
     font-size: 2em;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -34,6 +34,20 @@
     }
     to {
         visibility: visible;
+        opacity: 1;
+    }
+}
+@keyframes selected-spot-animation {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
         opacity: 1;
     }
 }
@@ -92,17 +106,29 @@
     justify-content: center;
     align-items: center;
 }
-.spot-a {
-
+.same-size-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spot-a, .spot-b {
+    background-color: black;
+    opacity: 1;
+    color: white;
+    transition: opacity 1s;
+    animation-name: selected-spot-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
 }
 .vehicle-wrap.parked-3 {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.spot-b {
-
 }
 .vehicle-wrap.parked-4 {
     position: absolute;
@@ -141,6 +167,7 @@
 .vehicle {
     position: absolute;
     width: 100%;
+    z-index: 100;
 }
 @media only screen and (max-width: 1050px) {
     .parallel-park .vehicle-wrap-parking {

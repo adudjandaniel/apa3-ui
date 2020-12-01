@@ -78,6 +78,7 @@ export class HmiComponent implements OnInit, OnChanges {
 
   selectExecutionLocation(spot: string): void {
     this.selectedSpot = spot;
+    this.awaitState.emit({name: 'spot-selected', value: this.selectedSpot});
     this.currentStep = 'select-execution-location';
   }
 
@@ -86,6 +87,7 @@ export class HmiComponent implements OnInit, OnChanges {
   }
 
   initiateParkingProcedure(): void {
+    this.currentStep = 'awaiting';
     this.awaitState.emit({name: 'parking', value: this.selectedSpot});
   }
 

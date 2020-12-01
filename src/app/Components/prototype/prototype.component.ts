@@ -11,6 +11,7 @@ export class PrototypeComponent implements OnInit {
   scenario: string;
   parkingType: string;
   spot: string;
+  beginPark: boolean;
   hmiStep: HmiStep;
   completeTag = '-complete';
 
@@ -26,6 +27,7 @@ export class PrototypeComponent implements OnInit {
     this.animationState = 'inactive';
     this.parkingType = '';
     this.spot = '';
+    this.beginPark = false;
   }
 
   handleHmiState(step: HmiStep): void {
@@ -40,8 +42,12 @@ export class PrototypeComponent implements OnInit {
         this.parkingType = step.value;
         break;
       }
+      case 'spot-selected': {
+        this.spot = step.value;
+        break;
+      }
       case 'parking': {
-        this.animationState = step.name + this.completeTag;
+        this.beginPark = true;
         break;
       }
       case 'restart': {

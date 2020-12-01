@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'app-prototype-animation',
@@ -17,6 +17,7 @@ import { trigger, state, style, animate, transition, AnimationEvent } from '@ang
         animate('2s')
       ])
     ]),
+
     trigger('prepPerpendicularPark', [
       state('perpendicular-park-start', style({
         top: '50%'
@@ -28,6 +29,7 @@ import { trigger, state, style, animate, transition, AnimationEvent } from '@ang
         animate('2s')
       ])
     ]),
+
     trigger('prepPerpendicularParkNoSpots', [
       state('perpendicular-park-start-no-spots', style({
         top: '30%'
@@ -39,17 +41,26 @@ import { trigger, state, style, animate, transition, AnimationEvent } from '@ang
         animate('2s')
       ])
     ]),
+
     trigger('completeParallelPark', [
       state('parallel-park-before-parking', style({
-
+        top: '40%'
       })),
       state('parallel-park-final', style({
-
+        left: '45%',
+        top: '40%'
       })),
       transition('parallel-park-before-parking => parallel-park-final', [
-        animate('3s')
+        animate('5s', keyframes([
+          style({top: '20%', offset: 0.25}),
+          style({top: '20%', offset: 0.28}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.7}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.71}),
+          style({top: '40%', transform: 'rotate(90deg)', left: '45%', offset: 1})
+        ]))
       ])
     ]),
+
     trigger('completePerpendicularParkA', [
       state('perpendicular-park-before-parking', style({
 
@@ -61,6 +72,7 @@ import { trigger, state, style, animate, transition, AnimationEvent } from '@ang
         animate('3s')
       ])
     ]),
+
     trigger('completePerpendicularParkB', [
       state('perpendicular-park-before-parking', style({
 
@@ -79,6 +91,7 @@ export class AnimationComponent implements OnInit, OnChanges {
   @Input() scenario: string;
   @Input() parkingType: string;
   @Input() spot: string;
+  @Input() park: boolean;
   showSpots: boolean;
 
   constructor() {
@@ -90,21 +103,15 @@ export class AnimationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (const propertyName of Object.keys(changes)) {
-      if (propertyName === 'spot') {
-        console.log('Prop changed: ', 'spot');
-      }
-      if (propertyName === 'parkingType') {
-        console.log('Prop changed: ', 'parkingType');
-      }
-      if (propertyName === 'scenario') {
-        console.log('Prop changed: ', 'scenario');
-      }
-    }
   }
 
   prepParkDone(event: AnimationEvent): void {
     this.showSpots = !(this.scenario === 'no-spots-scenario' || this.scenario === '');
+    this.animationStatus.emit(true);
+  }
+
+  parkDone(event: AnimationEvent): void {
+    this.showSpots = false;
     this.animationStatus.emit(true);
   }
 }
