@@ -11,6 +11,15 @@
     font-size: 2em;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+div.parallel-park, div.perpendicular-park {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+    animation-name: show-spot-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+}
 .parallel-park .spot-label {
     transform: rotate(0deg);
 }
