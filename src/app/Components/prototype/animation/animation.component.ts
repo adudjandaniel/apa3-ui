@@ -1,18 +1,18 @@
-import { Component, OnInit, Output, EventEmitter, Input, SimpleChange } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'prototype-animation',
+  selector: 'app-prototype-animation',
   templateUrl: './animation.component.html',
   styleUrls: ['./animation.component.css']
 })
-export class AnimationComponent implements OnInit {
+export class AnimationComponent implements OnInit, OnChanges {
   @Output() animationStatus: EventEmitter<string>;
   @Input() scenario: string;
   @Input() parkingType: string;
   @Input() spot: string;
   showSpots: boolean;
 
-  constructor() { 
+  constructor() {
     this.animationStatus = new EventEmitter<string>();
     this.showSpots = false;
   }
@@ -20,16 +20,16 @@ export class AnimationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChange) {
-    for (const propertyName in changes) {
+  ngOnChanges(changes: SimpleChanges) {
+    for (const propertyName of Object.keys(changes)) {
       if (propertyName === 'spot') {
-        console.log("Prop changed", 'spot')
+        console.log('Prop changed', 'spot');
       }
       if (propertyName === 'parkingType') {
-        console.log("Prop changed", 'parkingType')
+        console.log('Prop changed', 'parkingType');
       }
       if (propertyName === 'scenario') {
-        console.log("Prop changed", 'scenario')
+        console.log('Prop changed', 'scenario');
       }
     }
   }

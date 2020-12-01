@@ -1,8 +1,8 @@
 <div class="animation">
-    <prototype-animation [scenario]="scenario" [parkingType]="parkingType" [spot]="spot" (animationStatus)="animationStatusUpdate($event)"></prototype-animation>
+    <app-prototype-animation [scenario]="scenario" [parkingType]="parkingType" [spot]="spot" (animationStatus)="animationStatusUpdate($event)"></app-prototype-animation>
 </div>
 <div class="hmi-wrapper">
     <div class="hmi">
-        <prototype-hmi [animationState]="animationState" (awaitState)="handleHmiState($event)"></prototype-hmi>
+        <app-prototype-hmi [animationState]="animationState" (awaitState)="handleHmiState($event)"></app-prototype-hmi>
     </div>
 </div>

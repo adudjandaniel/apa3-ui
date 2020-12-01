@@ -1,12 +1,12 @@
-import { Component, Input, Output, EventEmitter, OnInit, SimpleChange } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
 import { HmiStep } from 'src/app/Models/hmi-step';
 
 @Component({
-  selector: 'prototype-hmi',
+  selector: 'app-prototype-hmi',
   templateUrl: './hmi.component.html',
   styleUrls: ['./hmi.component.css']
 })
-export class HmiComponent implements OnInit {
+export class HmiComponent implements OnInit, OnChanges {
   @Output() awaitState: EventEmitter<HmiStep>;
   @Input() animationState: string;
 
@@ -14,7 +14,7 @@ export class HmiComponent implements OnInit {
   currentStep: string;
   selectedSpot: string;
 
-  constructor() { 
+  constructor() {
     this.awaitState = new EventEmitter<HmiStep>();
   }
 
@@ -22,7 +22,7 @@ export class HmiComponent implements OnInit {
     this.selectScenario();
   }
 
-  ngOnChanges(changes: SimpleChange) {
+  ngOnChanges(changes: SimpleChanges) {
     for (const propertyName in changes) {
       if (propertyName === 'animationState') {
         this.onAnimationChange(changes[propertyName]);
@@ -31,16 +31,15 @@ export class HmiComponent implements OnInit {
   }
 
   onAnimationChange(change: SimpleChange) {
-    console.log("Animation State: ", change);
     switch (this.animationState) {
-      case "start-apa-complete": {
+      case 'start-apa-complete': {
         break;
       }
-      case "initialize-parking-style-complete": {
+      case 'initialize-parking-style-complete': {
         this.showSpot();
         break;
       }
-      case "parking-complete": {
+      case 'parking-complete': {
         this.parkSuccess();
         break;
       }
