@@ -6,6 +6,37 @@
 .no-display {
     display: none;
 }
+.spot-label {
+    color: black;
+    font-size: 2em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.parallel-park .spot-label {
+    transform: rotate(0deg);
+}
+.perpendicular-park .spot-label {
+    transform: rotate(-90deg);
+}
+.spot {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+    border: solid 1px black;
+    animation-name: show-spot-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+}
+@keyframes show-spot-animation {
+    from {
+        visibility: hidden;
+        opacity: 0; 
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
 .perpendicular-park .vehicle-wrap.parked-1 {
     top: 5%;
 }
@@ -62,7 +93,7 @@
     align-items: center;
 }
 .spot-a {
-    background-color: rgba(36, 36, 36, 0.08);
+
 }
 .vehicle-wrap.parked-3 {
     position: absolute;
@@ -71,7 +102,7 @@
     align-items: center;
 }
 .spot-b {
-    background-color: rgba(36, 36, 36, 0.08);
+
 }
 .vehicle-wrap.parked-4 {
     position: absolute;

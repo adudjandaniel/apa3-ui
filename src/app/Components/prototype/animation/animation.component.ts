@@ -92,18 +92,19 @@ export class AnimationComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     for (const propertyName of Object.keys(changes)) {
       if (propertyName === 'spot') {
-        console.log('Prop changed', 'spot');
+        console.log('Prop changed: ', 'spot');
       }
       if (propertyName === 'parkingType') {
-        console.log('Prop changed', 'parkingType');
+        console.log('Prop changed: ', 'parkingType');
       }
       if (propertyName === 'scenario') {
-        console.log('Prop changed', 'scenario');
+        console.log('Prop changed: ', 'scenario');
       }
     }
   }
 
   prepParkDone(event: AnimationEvent): void {
+    this.showSpots = !(this.scenario === 'no-spots-scenario' || this.scenario === '');
     this.animationStatus.emit(true);
   }
 }

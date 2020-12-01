@@ -12,12 +12,11 @@
         <div [ngClass]="{
             'vehicle-wrap': true, 
             'parked-3': true, 
-            'spot-a': showSpots
+            'spot': showSpots && scenario !== 'no-spots-scenario', 
+            'spot-a': showSpots && spot === 'A'
         }">
-            <img [ngClass]="{
-                'vehicle': true, 
-                'no-display': scenario !== 'no-spots-scenario'
-            }" src="/assets/img/vehicle.png">
+            <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
+            <p class="spot-label" *ngIf="showSpots">A</p>
         </div>
         <div class="vehicle-wrap parked-4">
             <img class="vehicle" src="/assets/img/vehicle.png">
@@ -25,8 +24,10 @@
         <div [ngClass]="{
             'vehicle-wrap': true, 
             'parked-5': true, 
-            'spot-b': showSpots
+            'spot': showSpots && scenario !== 'no-spots-scenario', 
+            'spot-a': showSpots && spot === 'B'
         }">
+            <p class="spot-label" *ngIf="showSpots">B</p>
         </div>
         <div class="vehicle-wrap parked-6">
             <img class="vehicle" src="/assets/img/vehicle.png">
@@ -49,13 +50,12 @@
         </div>
         <div [ngClass]="{
             'vehicle-wrap': true, 
-            'parked-2': true, 
-            'spot-a': showSpots
+            'parked-2': true,
+            'spot': showSpots && scenario !== 'no-spots-scenario', 
+            'spot-a': showSpots && spot === 'A'
         }">
-            <img [ngClass]="{
-                'vehicle': true,
-                'no-display': scenario !== 'no-spots-scenario'
-            }" src="/assets/img/vehicle.png">
+            <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
+            <p class="spot-label" *ngIf="showSpots">A</p>
         </div>
         <div class="vehicle-wrap parked-3">
             <img class="vehicle" src="/assets/img/vehicle.png">
