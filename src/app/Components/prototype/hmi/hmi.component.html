@@ -47,7 +47,7 @@
             <div>
                 <button (click)="selectExecutionLocation('A')">Spot A</button>
             </div>
-            <div>
+            <div *ngIf="parkingType === 'perpendicular'">
                 <button (click)="selectExecutionLocation('B')">Spot B</button>
             </div>
         </div>
@@ -99,10 +99,14 @@
                 <button (click)="selectScenario()">Sorry; cannot safely park<br><span class="return-to-start">Return to start</span></button>
             </div>
         </div>
+        <div [ngClass]="{
+            'loader': true,
+            'hide-step': currentStep !== 'awaiting'
+        }"></div>
     </div>
     <div [ngClass]="{
             'cancel-park': true,
-            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-apa' || currentStep === 'select-scenario' || currentStep === 'not-safe' || currentStep === 'no-spot'
+            'hide-step': currentStep === 'parking-successful' || currentStep === 'start-apa' || currentStep === 'select-scenario' || currentStep === 'not-safe' || currentStep === 'no-spot' || currentStep === 'awaiting'
         }">
         <div>
             <button (click)="cancelPark()">Cancel</button>

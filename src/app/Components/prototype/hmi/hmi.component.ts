@@ -12,6 +12,7 @@ export class HmiComponent implements OnInit, OnChanges {
 
   currentScenario: string;
   currentStep: string;
+  parkingType: string;
   selectedSpot: string;
 
   constructor() {
@@ -62,6 +63,8 @@ export class HmiComponent implements OnInit, OnChanges {
   }
 
   initiatializeParkingStyle(style: string): void {
+    this.currentStep = 'awaiting';
+    this.parkingType = style;
     this.awaitState.emit({name: 'initialize-parking-style', value: style});
   }
 

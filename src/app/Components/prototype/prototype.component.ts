@@ -11,6 +11,8 @@ export class PrototypeComponent implements OnInit {
   scenario: string;
   parkingType: string;
   spot: string;
+  hmiStep: HmiStep;
+  completeTag = '-complete';
 
   constructor() {
     this.restart();
@@ -27,7 +29,7 @@ export class PrototypeComponent implements OnInit {
   }
 
   handleHmiState(step: HmiStep): void {
-    const completeTag = '-complete';
+    this.hmiStep = step;
 
     switch (step.name) {
       case 'start-apa': {
@@ -36,11 +38,10 @@ export class PrototypeComponent implements OnInit {
       }
       case 'initialize-parking-style': {
         this.parkingType = step.value;
-        // this.animationState = step.name + completeTag;
         break;
       }
       case 'parking': {
-        this.animationState = step.name + completeTag;
+        this.animationState = step.name + this.completeTag;
         break;
       }
       case 'restart': {
@@ -53,6 +54,9 @@ export class PrototypeComponent implements OnInit {
   parkVehicle(spot: string): void {
   }
 
-  animationStatusUpdate(status: string): void {
+  animationStatusUpdate(stepComplete: boolean): void {
+    if (stepComplete) {
+      this.animationState = this.hmiStep.name + this.completeTag;
+    }
   }
 }

@@ -8,23 +8,18 @@
 }
 .perpendicular-park .vehicle-wrap.parked-1 {
     top: 5%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap.parked-2 {
     top: 20%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap.parked-3 {
     top: 35%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap.parked-4 {
     top: 50%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap.parked-5 {
     top: 65%;
-    left: 60%;
 }
 .perpendicular-park .vehicle-wrap.parked-6 {
     top: 80%;
@@ -35,73 +30,67 @@
 }
 .parallel-park .vehicle-wrap.parked-1 {
     top: 10%;
-    left: 55%;
 }
 .parallel-park .vehicle-wrap.parked-2 {
     top: 40%;
-    left: 55%;
 }
 .parallel-park .vehicle-wrap.parked-3 {
     top: 70%;
+}
+.parallel-park .vehicle-wrap {
     left: 55%;
+}
+.perpendicular-park .vehicle-wrap {
+    left: 60%;
 }
 .parallel-park .vehicle-wrap-parking {
     left: 45%;
 }
+.vehicle-wrap {
+    width: 200px;
+    height: 90px;
+}
 .vehicle-wrap.parked-1 {
     position: absolute;
-    width: 200px;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .vehicle-wrap.parked-2 {
     position: absolute;
-    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .spot-a {
     background-color: rgba(36, 36, 36, 0.08);
 }
 .vehicle-wrap.parked-3 {
     position: absolute;
-    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .spot-b {
     background-color: rgba(36, 36, 36, 0.08);
 }
 .vehicle-wrap.parked-4 {
     position: absolute;
-    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .vehicle-wrap.parked-5 {
     position: absolute;
-    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .vehicle-wrap.parked-6 {
     position: absolute;
-    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90px;
 }
 .perpendicular-park .vehicle-wrap {
     transform: rotate(180deg);
@@ -113,6 +102,7 @@
     position: absolute;
     top: 100%;
     width: 200px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,4 +111,29 @@
 .vehicle {
     position: absolute;
     width: 100%;
+}
+@media only screen and (max-width: 850px) {
+    .vehicle-wrap {
+        width: 100px;
+        height: 45px;
+    }
+    .vehicle-wrap-parking {
+        position: absolute;
+        top: 100%;
+        width: 100px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(90deg);
+    }
+    .parallel-park .vehicle-wrap-parking {
+        left: 25%;
+    }
+    .parallel-park .vehicle-wrap {
+        left: 45%;
+    }
+    .perpendicular-park .vehicle-wrap-parking {
+        left: 25%;
+    }
 }

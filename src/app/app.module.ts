@@ -10,6 +10,7 @@ import { DriveComponent } from './Components/drive/drive.component';
 import { DocumentComponent } from './Components/document/document.component';
 import { HmiComponent } from './Components/prototype/hmi/hmi.component';
 import { AnimationComponent } from './Components/prototype/animation/animation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AnimationComponent } from './Components/prototype/animation/animation.c
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule
   ],

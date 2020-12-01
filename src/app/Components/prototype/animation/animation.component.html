@@ -31,7 +31,10 @@
         <div class="vehicle-wrap parked-6">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
-        <div class="vehicle-wrap-parking">
+        <div [@prepPerpendicularPark]="parkingType === 'perpendicular' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  
+            (@prepPerpendicularPark.done)="prepParkDone($event)" 
+            class="vehicle-wrap-parking"
+            >
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
     </div>
@@ -55,7 +58,10 @@
         <div class="vehicle-wrap parked-3">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
-        <div class="vehicle-wrap-parking">
+        <div [@prepParallelPark]="parkingType === 'parallel' ? 'parallel-park-before-parking' : 'parallel-park-start'"  
+            (@prepParallelPark.done)="prepParkDone($event)" 
+            class="vehicle-wrap-parking"
+            >
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
     </div>
