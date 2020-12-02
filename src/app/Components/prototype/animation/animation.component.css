@@ -4,7 +4,7 @@
     height: 100%;
 }
 .no-display {
-    display: none;
+    display: none !important;
 }
 .spot-label {
     color: inherit;
@@ -189,6 +189,7 @@ div.parallel-park, div.perpendicular-park {
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-iteration-count: 1;
+    z-index: 1000;
 }
 button {
     padding: 0.6em 1em;
@@ -220,6 +221,10 @@ button:hover, button:focus {
     .perpendicular-park .vehicle-wrap-parking {
         left: 20%;
     }
+    .interruption-set {
+        top: 2%;
+        left: 2%;
+    }
 }
 @media only screen and (max-width: 650px) {
     .vehicle-wrap {
@@ -244,6 +249,12 @@ button:hover, button:focus {
     .perpendicular-park .vehicle-wrap-parking {
         left: 10%;
     }
+    .interruption-set {
+        top: 2%;
+        left: 2%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 @media only screen and (max-width: 350px) {
     .vehicle-wrap {
@@ -267,5 +278,15 @@ button:hover, button:focus {
     }
     .perpendicular-park .vehicle-wrap-parking {
         left: 20%;
+    }
+    .interruption-set {
+        top: 2%;
+        left: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        padding: 0.6em 1em;
+        font-size: 0.7em;
     }
 }
