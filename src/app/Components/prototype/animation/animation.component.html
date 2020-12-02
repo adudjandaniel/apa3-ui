@@ -11,6 +11,15 @@
         'perpendicular-park': parkingType === 'perpendicular',
         'no-display': parkingType !== 'perpendicular'
     }">
+        <div *ngIf="showObstacle"
+            [ngClass]="{
+                'obstacle-wrap': true,
+                'obstacle-a': spot === 'A',
+                'obstacle-b': spot === 'B'
+            }"
+            >
+            <img class="obstacle" src="/assets/img/person-top-view.png">
+        </div>
         <div class="vehicle-wrap parked-1">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
@@ -64,6 +73,14 @@
         'parallel-park': parkingType === 'parallel',
         'no-display': parkingType !== 'parallel'
     }">
+        <div *ngIf="showObstacle"
+            [ngClass]="{
+                'obstacle-wrap': true,
+                'obstacle-a': spot === 'A'
+            }"
+            >
+            <img class="obstacle" src="/assets/img/person-top-view.png">
+        </div>
         <div class="vehicle-wrap parked-1">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
@@ -86,8 +103,31 @@
             [@completeParallelPark]="parkingType === 'parallel' && spot === 'A' && park && scenario !== 'interrupted-park-scenario' ? 'parallel-park-final' : 'parallel-park-before-parking'"  
             (@completeParallelPark.done)="parkDone($event)"
 
-            [@interruptedParkNonObstacle]="interruption !== '' && interruption != 'obstacle' && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"  
+            [@interruptedParkNonObstacle]="interruption !== '' && interruption !== 'obstacle' && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"  
             (@interruptedParkNonObstacle.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle]="screenMaxWidth === '>1700px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle1700]="screenMaxWidth === '1700px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle1700.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle1400]="screenMaxWidth === '1400px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle1400.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle1200]="screenMaxWidth === '1200px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle1200.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle850]="screenMaxWidth === '850px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle850.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle650]="screenMaxWidth === '650px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle650.done)="interruptedParkDone($event)"
+
+            [@interruptedParallelParkObstacle350]="screenMaxWidth === '350px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'parallel' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedParallelParkObstacle350.done)="interruptedParkDone($event)"
+
+            [@resetParkingVehicleRotation]="resetAnimation ? 'after' : 'before'"
 
             class="vehicle-wrap-parking"
             >

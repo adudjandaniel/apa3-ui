@@ -20,6 +20,35 @@ div.parallel-park, div.perpendicular-park {
     animation-timing-function: ease-in;
     animation-iteration-count: 1;
 }
+.obstacle {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+.perpendicular-park .obstacle-a {
+    top: 32%;
+    left: 60%;
+}
+.parallel-park .obstacle-a {
+    top: 32%;
+    left: 49%;
+}
+.perpendicular-park .obstacle-b {
+    top: 63%;
+    left: 60%;
+}
+.obstacle-wrap {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+    animation-name: show-animation;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+}
 .parallel-park .spot-label {
     transform: rotate(0deg);
 }
@@ -100,17 +129,16 @@ div.parallel-park, div.perpendicular-park {
     left: 35%;
 }
 .vehicle-wrap {
+    position: absolute;
     width: 200px;
     height: 90px;
 }
 .vehicle-wrap.parked-1 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .vehicle-wrap.parked-2 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,25 +162,21 @@ div.parallel-park, div.perpendicular-park {
     animation-iteration-count: 1;
 }
 .vehicle-wrap.parked-3 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .vehicle-wrap.parked-4 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .vehicle-wrap.parked-5 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .vehicle-wrap.parked-6 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -225,6 +249,16 @@ button:hover, button:focus {
         top: 2%;
         left: 2%;
     }
+    .parallel-park .obstacle-a {
+        top: 32%;
+        left: 51%;
+    }
+}
+@media only screen and (max-width: 850px) {
+    .parallel-park .obstacle-a {
+        top: 32%;
+        left: 54%;
+    }
 }
 @media only screen and (max-width: 650px) {
     .vehicle-wrap {
@@ -255,6 +289,15 @@ button:hover, button:focus {
         display: flex;
         flex-direction: column;
     }
+    .obstacle-wrap {
+        position: absolute;
+        width: 40px;
+        height: 30px;
+    }
+    .parallel-park .obstacle-a {
+        top: 32%;
+        left: 53%;
+    }
 }
 @media only screen and (max-width: 350px) {
     .vehicle-wrap {
@@ -268,7 +311,7 @@ button:hover, button:focus {
         height: 45px;
     }
     .parallel-park .vehicle-wrap-parking {
-        left: 25%;
+        left: 20%;
     }
     .parallel-park .vehicle-wrap {
         left: 45%;
@@ -288,5 +331,13 @@ button:hover, button:focus {
     button {
         padding: 0.6em 1em;
         font-size: 0.7em;
+    }
+    .obstacle-wrap {
+        width: 25px;
+        height: 10px;
+    }
+    .parallel-park .obstacle-a {
+        top: 32%;
+        left: 55%;
     }
 }

@@ -168,4 +168,7 @@ div.cancel-park div:focus button {
     div.hide-step {
         display: none;
     }
+    div.step-title {
+        font-size: 0.7em;
+    }
 }

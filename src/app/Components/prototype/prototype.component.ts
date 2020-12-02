@@ -12,6 +12,7 @@ export class PrototypeComponent implements OnInit {
   parkingType: string;
   spot: string;
   beginPark: boolean;
+  resetAnimation: boolean;
   hmiStep: HmiStep;
   completeTag = '-complete';
 
@@ -28,9 +29,11 @@ export class PrototypeComponent implements OnInit {
     this.parkingType = '';
     this.spot = '';
     this.beginPark = false;
+    this.resetAnimation = true;
   }
 
   handleHmiState(step: HmiStep): void {
+    this.resetAnimation = false;
     this.hmiStep = step;
 
     switch (step.name) {

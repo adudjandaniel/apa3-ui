@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges, HostListener } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes, AnimationEvent } from '@angular/animations';
 
 @Component({
@@ -61,6 +61,139 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
       ])
     ]),
 
+    trigger('interruptedParallelParkObstacle', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '43%',
+        top: '40%',
+        transform: 'rotate(70deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('5s', keyframes([
+          style({top: '20%', offset: 0.25}),
+          style({top: '20%', offset: 0.28}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.7}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.72}),
+          style({top: '40%', transform: 'rotate(70deg)', left: '43%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle1700', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '42%',
+        top: '40%',
+        transform: 'rotate(60deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('5s', keyframes([
+          style({top: '20%', offset: 0.25}),
+          style({top: '20%', offset: 0.28}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.7}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '40%', offset: 0.72}),
+          style({top: '40%', transform: 'rotate(60deg)', left: '42%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle1400', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '36%',
+        top: '25%',
+        transform: 'rotate(70deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '20%', offset: 0.5}),
+          style({top: '20%', offset: 0.6}),
+          style({top: '25%', transform: 'rotate(70deg)', left: '36%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle1200', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '34%',
+        top: '23%',
+        transform: 'rotate(70deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '20%', offset: 0.6}),
+          style({top: '20%', offset: 0.7}),
+          style({top: '23%', transform: 'rotate(70deg)', left: '34%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle850', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '31.5%',
+        top: '23%',
+        transform: 'rotate(70deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '20%', offset: 0.6}),
+          style({top: '20%', offset: 0.7}),
+          style({top: '23%', transform: 'rotate(70deg)', left: '31.5%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle650', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '22%',
+        top: '25%',
+        transform: 'rotate(70deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '20%', offset: 0.5}),
+          style({top: '20%', offset: 0.6}),
+          style({top: '25%', transform: 'rotate(70deg)', left: '22%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedParallelParkObstacle350', [
+      state('before-parking', style({
+        top: '40%'
+      })),
+      state('park-final', style({
+        left: '37%',
+        top: '38%',
+        transform: 'rotate(68deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('5s', keyframes([
+          style({top: '20%', offset: 0.3}),
+          style({top: '20%', offset: 0.35}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '35%', offset: 0.7}),
+          style({top: '35%', transform: 'rotate(45deg)', left: '35%', offset: 0.75}),
+          style({top: '38%', transform: 'rotate(68deg)', left: '37%', offset: 0.9}),
+          style({top: '38%', transform: 'rotate(68deg)', left: '37%', offset: 1})
+        ]))
+      ])
+    ]),
+
     trigger('completePerpendicularParkA', [
       state('perpendicular-park-before-parking', style({
         top: '50%'
@@ -95,6 +228,18 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
       ])
     ]),
 
+    trigger('resetParkingVehicleRotation', [
+      state('before', style({
+      })),
+      state('after', style({
+        left: 'none',
+        transform: 'rotate(90deg)'
+      })),
+      transition('before => after', [
+        animate('0s')
+      ])
+    ]),
+
     trigger('interruptedParkNonObstacle', [
       state('before-parking', style({
 
@@ -115,9 +260,12 @@ export class AnimationComponent implements OnInit, OnChanges {
   @Input() parkingType: string;
   @Input() spot: string;
   @Input() park: boolean;
+  @Input() resetAnimation: boolean;
+  screenMaxWidth: string;
   showSpots: boolean;
   interruption: string;
   hideInterruptionSet: boolean;
+  showObstacle: boolean;
 
   constructor() {
     this.animationStatus = new EventEmitter<boolean>();
@@ -125,22 +273,55 @@ export class AnimationComponent implements OnInit, OnChanges {
     this.reset();
   }
 
-  reset() {
-    this.interruption = '';
-    this.showSpots = false;
-    this.hideInterruptionSet = true;
-  }
-
   ngOnInit(): void {
+    this.setScreenWidth();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (const propertyName in changes) {
+    for (const propertyName of Object.keys(changes)) {
       if (propertyName === 'park') {
         if (this.park === true) {
           this.hideInterruptionSet = false;
         }
       }
+      if (propertyName === 'resetAnimation') {
+        if (this.resetAnimation) {
+          this.reset();
+        }
+      }
+    }
+  }
+
+  @HostListener('window:resize', ['$event']) onWindowResize(event: any) {
+    this.setScreenWidth();
+  }
+
+  setScreenWidth() {
+    const width = document.body.clientWidth;
+
+    if (width <= 350) {
+      this.screenMaxWidth = '350px';
+    } else if (width <= 650) {
+      this.screenMaxWidth = '650px';
+    } else if (width <= 850) {
+      this.screenMaxWidth = '850px';
+    } else if (width <= 1200) {
+      this.screenMaxWidth = '1200px';
+    } else if (width <= 1400) {
+      this.screenMaxWidth = '1400px';
+    } else if (width <= 1700) {
+      this.screenMaxWidth = '1700px';
+    } else {
+      this.screenMaxWidth = '>1700px';
+    }
+  }
+
+  reset(ignoreObstacle: boolean = false) {
+    this.interruption = '';
+    this.showSpots = false;
+    this.hideInterruptionSet = true;
+    if (!ignoreObstacle) {
+      this.showObstacle = false;
     }
   }
 
@@ -156,11 +337,14 @@ export class AnimationComponent implements OnInit, OnChanges {
 
   interruptedParkDone(event: AnimationEvent): void {
     this.interruptionState.emit(this.interruption);
-    this.reset();
+    this.reset(true);
   }
 
   setInterruption(interruption: string) {
     this.interruption = interruption;
     this.hideInterruptionSet = true;
+    if (interruption === 'obstacle') {
+      this.showObstacle = true;
+    }
   }
 }
