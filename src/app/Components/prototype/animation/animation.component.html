@@ -58,12 +58,35 @@
             [@completePerpendicularParkA]="parkingType === 'perpendicular' && spot === 'A' && park && scenario !== 'interrupted-park-scenario' ? 'perpendicular-park-final-A' : 'perpendicular-park-before-parking'"  
             (@completePerpendicularParkA.done)="parkDone($event)"
 
+            [@interruptedPerpendicularParkAObstacle]="screenMaxWidth === '>1700px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle1700]="screenMaxWidth === '1700px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle1700.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle1400]="screenMaxWidth === '1400px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle1400.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle1200]="screenMaxWidth === '1200px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle1200.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle850]="screenMaxWidth === '850px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle850.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle650]="screenMaxWidth === '650px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle650.done)="interruptedParkDone($event)"
+
+            [@interruptedPerpendicularParkAObstacle350]="screenMaxWidth === '350px' && interruption !== '' && interruption === 'obstacle' && showObstacle && parkingType === 'perpendicular' && spot === 'A' && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"
+            (@interruptedPerpendicularParkAObstacle350.done)="interruptedParkDone($event)"
+
             [@completePerpendicularParkB]="parkingType === 'perpendicular' && spot === 'B' && park && scenario !== 'interrupted-park-scenario' ? 'perpendicular-park-final-B' : 'perpendicular-park-before-parking'"  
             (@completePerpendicularParkB.done)="parkDone($event)"
 
             [@interruptedParkNonObstacle]="interruption !== '' && interruption !== 'obstacle' && parkingType === 'perpendicular' && (spot === 'A' || spot === 'B') && park && scenario === 'interrupted-park-scenario' ? 'park-final' : 'before-parking'"  
             (@interruptedParkNonObstacle.done)="interruptedParkDone($event)"
             
+            [@resetParkingVehicleRotation]="resetAnimation ? 'after' : 'before'"
+
             class="vehicle-wrap-parking"
             >
             <img class="vehicle" src="/assets/img/vehicle.png">

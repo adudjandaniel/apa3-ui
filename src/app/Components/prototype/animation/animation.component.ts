@@ -194,6 +194,8 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
       ])
     ]),
 
+
+
     trigger('completePerpendicularParkA', [
       state('perpendicular-park-before-parking', style({
         top: '50%'
@@ -207,6 +209,122 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
         animate('5s', keyframes([
           style({top: '38%', transform: 'rotate(155deg)', left: '43%', offset: 0.55}),
           style({top: '35%', transform: 'rotate(180deg)', left: '55%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '35%',
+        left: '50%',
+        transform: 'rotate(175deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '38%', transform: 'rotate(150deg)', left: '45%', offset: 0.6}),
+          style({top: '35%', transform: 'rotate(175deg)', left: '50%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle1700', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '37%',
+        left: '47%',
+        transform: 'rotate(165deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '40%', transform: 'rotate(140deg)', left: '43%', offset: 0.6}),
+          style({top: '37%', transform: 'rotate(165deg)', left: '47%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle1400', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '37%',
+        left: '45%',
+        transform: 'rotate(160deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '40%', transform: 'rotate(130deg)', left: '42%', offset: 0.6}),
+          style({top: '37%', transform: 'rotate(160deg)', left: '45%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle1200', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '37%',
+        left: '39%',
+        transform: 'rotate(160deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '40%', transform: 'rotate(150deg)', left: '34%', offset: 0.7}),
+          style({top: '37%', transform: 'rotate(160deg)', left: '39%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle850', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '38%',
+        left: '34%',
+        transform: 'rotate(160deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '38%', transform: 'rotate(160deg)', left: '34%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle650', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '38%',
+        left: '28%',
+        transform: 'rotate(160deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '38%', transform: 'rotate(160deg)', left: '28%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkAObstacle350', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '38%',
+        left: '29%',
+        transform: 'rotate(160deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('3s', keyframes([
+          style({top: '38%', transform: 'rotate(160deg)', left: '29%', offset: 1})
         ]))
       ])
     ]),
