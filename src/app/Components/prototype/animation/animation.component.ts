@@ -291,9 +291,7 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
         transform: 'rotate(160deg)'
       })),
       transition('before-parking => park-final', [
-        animate('4s', keyframes([
-          style({top: '38%', transform: 'rotate(160deg)', left: '34%', offset: 1})
-        ]))
+        animate('4s')
       ])
     ]),
 
@@ -307,9 +305,7 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
         transform: 'rotate(160deg)'
       })),
       transition('before-parking => park-final', [
-        animate('3s', keyframes([
-          style({top: '38%', transform: 'rotate(160deg)', left: '28%', offset: 1})
-        ]))
+        animate('3s')
       ])
     ]),
 
@@ -343,6 +339,110 @@ import { trigger, state, style, animate, transition, keyframes, AnimationEvent }
           style({top: '65%', transform: 'rotate(5deg)', left: '45%', offset: 0.7}),
           style({top: '65%', transform: 'rotate(0deg)', left: '55%', offset: 1})
         ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '49%',
+        transform: 'rotate(0deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('5s', keyframes([
+          style({top: '65%', transform: 'rotate(5deg)', left: '45%', offset: 0.6}),
+          style({top: '65%', transform: 'rotate(0deg)', left: '49%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle1700', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '46.7%',
+        transform: 'rotate(0deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s', keyframes([
+          style({top: '65%', transform: 'rotate(5deg)', left: '45%', offset: 0.7}),
+          style({top: '65%', transform: 'rotate(0deg)', left: '46.7%', offset: 1})
+        ]))
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle1400', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '45%',
+        transform: 'rotate(5deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s')
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle1200', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '40%',
+        transform: 'rotate(5deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s')
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle850', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '33%',
+        transform: 'rotate(5deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s')
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle650', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '25%',
+        transform: 'rotate(2deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s')
+      ])
+    ]),
+
+    trigger('interruptedPerpendicularParkBObstacle350', [
+      state('before-parking', style({
+        top: '50%'
+      })),
+      state('park-final', style({
+        top: '65%',
+        left: '27%',
+        transform: 'rotate(2deg)'
+      })),
+      transition('before-parking => park-final', [
+        animate('4s')
       ])
     ]),
 
