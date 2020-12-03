@@ -46,7 +46,7 @@
         }">
             <p class="spot-label" *ngIf="showSpots">B</p>
         </div>
-        <div class="vehicle-wrap parked-6">
+        <div *ngIf="scenario !== 'no-spots-scenario'" class="vehicle-wrap parked-6">
             <img class="vehicle" src="/assets/img/vehicle.png">
         </div>
         <div [@prepPerpendicularPark]="parkingType === 'perpendicular' && scenario !== 'no-spots-scenario' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  

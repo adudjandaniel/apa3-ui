@@ -130,8 +130,8 @@ div.parallel-park, div.perpendicular-park {
 }
 .vehicle-wrap {
     position: absolute;
-    width: 200px;
-    height: 90px;
+    width: 10%;
+    height: 10%;
 }
 .vehicle-wrap.parked-1 {
     display: flex;
@@ -190,8 +190,8 @@ div.parallel-park, div.perpendicular-park {
 .vehicle-wrap-parking {
     position: absolute;
     top: 100%;
-    width: 200px;
-    height: 90px;
+    width: 10%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,6 +239,14 @@ button:hover, button:focus {
     cursor: pointer;
 }
 @media only screen and (max-width: 1050px) {
+    .vehicle-wrap {
+        width: 200px;
+        height: 90px;
+    }
+    .vehicle-wrap-parking {
+        width: 200px;
+        height: 90px;
+    }
     .parallel-park .vehicle-wrap-parking {
         left: 30%;
     }
@@ -255,9 +263,17 @@ button:hover, button:focus {
     }
 }
 @media only screen and (max-width: 850px) {
+    .vehicle-wrap {
+        width: 200px;
+        height: 90px;
+    }
     .parallel-park .obstacle-a {
         top: 32%;
         left: 54%;
+    }
+    .vehicle-wrap-parking {
+        width: 200px;
+        height: 90px;
     }
 }
 @media only screen and (max-width: 650px) {
