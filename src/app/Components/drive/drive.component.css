@@ -89,12 +89,12 @@ div.menu-content button:focus div.icon-container {
     height: 20px;
 }
 div.folders button .icon-container {
-    background-image: url("/assets/img/folder.png");
+    background-image: url("../../../assets/img/folder.png");
     background-repeat: no-repeat;
     opacity: 0.5;
 }
 div.files button .icon-container {
-    background-image: url("/assets/img/file.png");
+    background-image: url("../../../assets/img/file.png");
     background-repeat: no-repeat;
     opacity: 0.5;
 }

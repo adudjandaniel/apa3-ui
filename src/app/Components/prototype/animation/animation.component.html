@@ -18,13 +18,13 @@
                 'obstacle-b': spot === 'B'
             }"
             >
-            <img class="obstacle" src="/assets/img/person-top-view.png">
+            <img class="obstacle" src="./assets/img/person-top-view.png">
         </div>
         <div class="vehicle-wrap parked-1">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div class="vehicle-wrap parked-2">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div [ngClass]="{
             'vehicle-wrap': true, 
@@ -32,11 +32,11 @@
             'spot': showSpots && scenario !== 'no-spots-scenario', 
             'spot-a': showSpots && spot === 'A'
         }">
-            <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
+            <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="./assets/img/vehicle.png">
             <p class="spot-label" *ngIf="showSpots">A</p>
         </div>
         <div class="vehicle-wrap parked-4">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div [ngClass]="{
             'vehicle-wrap': true, 
@@ -47,7 +47,7 @@
             <p class="spot-label" *ngIf="showSpots">B</p>
         </div>
         <div *ngIf="scenario !== 'no-spots-scenario'" class="vehicle-wrap parked-6">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div [@prepPerpendicularPark]="parkingType === 'perpendicular' && scenario !== 'no-spots-scenario' ? 'perpendicular-park-before-parking' : 'perpendicular-park-start'"  
             (@prepPerpendicularPark.done)="prepParkDone($event)"
@@ -116,7 +116,7 @@
 
             class="vehicle-wrap-parking"
             >
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
     </div>
     <div [ngClass]="{
@@ -129,10 +129,10 @@
                 'obstacle-a': spot === 'A'
             }"
             >
-            <img class="obstacle" src="/assets/img/person-top-view.png">
+            <img class="obstacle" src="./assets/img/person-top-view.png">
         </div>
         <div class="vehicle-wrap parked-1">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div [ngClass]="{
             'vehicle-wrap': true, 
@@ -140,12 +140,12 @@
             'spot': showSpots && scenario !== 'no-spots-scenario'
         }">
             <div [ngClass]="{'spot-a': showSpots && spot === 'A', 'same-size-wrapper': true}">
-                <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="/assets/img/vehicle.png">
+                <img class="vehicle" *ngIf="scenario === 'no-spots-scenario'" src="./assets/img/vehicle.png">
                 <p class="spot-label" *ngIf="showSpots">A</p>
             </div>
         </div>
         <div class="vehicle-wrap parked-3">
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
         <div [@prepParallelPark]="parkingType === 'parallel' ? 'parallel-park-before-parking' : 'parallel-park-start'"  
             (@prepParallelPark.done)="prepParkDone($event)"
@@ -181,7 +181,7 @@
 
             class="vehicle-wrap-parking"
             >
-            <img class="vehicle" src="/assets/img/vehicle.png">
+            <img class="vehicle" src="./assets/img/vehicle.png">
         </div>
     </div>
 </div>
