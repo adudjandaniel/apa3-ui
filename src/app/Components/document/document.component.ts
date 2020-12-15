@@ -21,7 +21,6 @@ export class DocumentComponent implements OnInit {
       if (fileId) {
         this.driveService.getFile(fileId).subscribe((file: FileModel) => {
           this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(file.embedLink);
-          console.log(this.fileUrl);
         });
       }
     });
